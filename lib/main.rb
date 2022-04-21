@@ -1,5 +1,4 @@
 # frozen_string_literal: true
-require 'matrix'
 
 require_relative './board_model'
 require_relative './board_controller'
@@ -9,5 +8,6 @@ model = Board.new
 view = BoardView.new
 model.addObserver(view)
 controller = BoardController.new(model,view)
-controller.printBoard
-controller.requestInput
+# controller.printBoard
+controller.requestGameModeInput
+# controller.requestInput
