@@ -2,7 +2,13 @@
 require_relative './observer/observable'
 
 class Board < Observable
-    def initialize()
+
+  attr_accessor :mode
+  attr_accessor :firstMatrix
+  attr_accessor :secondMatrix
+  attr_accessor :difficulty
+
+  def initialize()
       super()
       @firstMatrix = []
       @secondMatrix = []
@@ -10,13 +16,10 @@ class Board < Observable
       @difficulty = 0
     end
 
-    attr_accessor :mode
-    attr_accessor :matrix
-    attr_accessor :difficulty
-    
+
     def setDifficultyEasy
       easyBoard = 
-        [['*','*','*','*','*','*','*','*','*','*','*','*'],
+       [['*','*','*','*','*','*','*','*','*','*','*','*'],
         ['*','_','_','_','_','_','_','_','_','_','_','*'],
         ['*','_','_','_','_','_','_','_','_','_','_','*'],
         ['*','_','_','_','_','_','_','_','_','_','_','*'],
@@ -65,16 +68,18 @@ class Board < Observable
       rowNumber
     end
 
-    # def mark(xo, yo, symbol)
-    # # marcar simbolo en la coordenada especificada
-    #   @matrix[xo][yo] = symbol
-    #   notifyAll() # ??? como funciona
-    # end
+    def mark(xo, yo, symbol, player)
+    # marcar simbolo en la coordenada especificada
+      if player == 1
+        @firstMatrix[xo][yo] = symbol
+      # else modificar secondMatrix
+      end
+    end
 
-    # def symbolAt(xo,yo)
-    # # imprime simbolo de la coordenada especificada
-    #   @matrix[xo][yo]
-    # end
+    def symbolAt(xo,yo)
+#### FALTA CAMBIAR CUANDO ES EL OTRO TABLERO
+      return @firstMatrix[xo][yo]
+    end
 
     # def winner(symbol)
     #   for i in 1..3
