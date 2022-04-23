@@ -2,8 +2,6 @@
 
 require_relative 'test_helper'
 require_relative '../lib/board_model'
-require_relative '../lib/board_controller'
-require_relative '../lib/board_view'
 require 'test/unit'
 
 # Revisa inicialización del tablero en modo fácil o difícil
@@ -44,20 +42,20 @@ class InitBoard < Test::Unit::TestCase
 
   def test_board_dif_easy
     @board = Board.new
-    @board.setDifficultyEasy
-    assert_equal(@board.firstMatrixJ1, @easy_board)
-    assert_equal(@board.firstMatrixJ2, @easy_board)
-    assert_equal(@board.secondMatrixJ1, @easy_board)
-    assert_equal(@board.secondMatrixJ2, @easy_board)
+    @board.set_difficulty_easy
+    assert_equal(@board.first_matrix_j1, @easy_board)
+    assert_equal(@board.first_matrix_j2, @easy_board)
+    assert_equal(@board.second_matrix_j1, @easy_board)
+    assert_equal(@board.second_matrix_j2, @easy_board)
   end
 
   def test_board_dif_hard
     @board = Board.new
-    @board.setDifficultyHard
-    assert_equal(@board.firstMatrixJ1, @hard_board)
-    assert_equal(@board.firstMatrixJ2, @hard_board)
-    assert_equal(@board.secondMatrixJ1, @hard_board)
-    assert_equal(@board.secondMatrixJ2, @hard_board)
+    @board.set_difficulty_hard
+    assert_equal(@board.first_matrix_j1, @hard_board)
+    assert_equal(@board.first_matrix_j2, @hard_board)
+    assert_equal(@board.second_matrix_j1, @hard_board)
+    assert_equal(@board.second_matrix_j2, @hard_board)
   end
 end
 
@@ -65,28 +63,13 @@ end
 class BoardTest < Test::Unit::TestCase
   def setup
     @board = Board.new
-    @view = BoardView.new
     @board.difficulty = 1
-    @board.setDifficultyEasy
-    @controller = BoardController.new(@board, @view)
-    @controller.player = 1
-    @easy_board =
-      [['*', '*', '*', '*', '*', '*', '*', '*', '*', '*', '*', '*'],
-       ['*', '_', '_', '_', '_', '_', '_', '_', '_', '_', '_', '*'],
-       ['*', '_', '_', '_', '_', '_', '_', '_', '_', '_', '_', '*'],
-       ['*', '_', '_', '_', '_', '_', '_', '_', '_', '_', '_', '*'],
-       ['*', '_', '_', '_', '_', '_', '_', '_', '_', '_', '_', '*'],
-       ['*', '_', '_', '_', '_', '_', '_', '_', '_', '_', '_', '*'],
-       ['*', '_', '_', '_', '_', '_', '_', '_', '_', '_', '_', '*'],
-       ['*', '_', '_', '_', '_', '_', '_', '_', '_', '_', '_', '*'],
-       ['*', '_', '_', '_', '_', '_', '_', '_', '_', '_', '_', '*'],
-       ['*', '_', '_', '_', '_', '_', '_', '_', '_', '_', '_', '*'],
-       ['*', '_', '_', '_', '_', '_', '_', '_', '_', '_', '_', '*'],
-       ['*', '*', '*', '*', '*', '*', '*', '*', '*', '*', '*', '*']]
+    @board.set_difficulty_easy
   end
 
-  def test_place_ship
-    @controller.handleShipPosition(5, 1, 1)
+  def test_place_horizontal_ship
+    # Coloca un barco de largo 5 en la primera fila
+    @board.place_horizontal_ship(1, 1, 5, 1)
     expected_j1 =
       [['*', '*', '*', '*', '*', '*', '*', '*', '*', '*', '*', '*'],
        ['*', ' i ', ' m ', ' m ', ' m ', ' f ', '_', '_', '_', '_', '_', '*'],
@@ -100,20 +83,25 @@ class BoardTest < Test::Unit::TestCase
        ['*', '_', '_', '_', '_', '_', '_', '_', '_', '_', '_', '*'],
        ['*', '_', '_', '_', '_', '_', '_', '_', '_', '_', '_', '*'],
        ['*', '*', '*', '*', '*', '*', '*', '*', '*', '*', '*', '*']]
-    assert_equal(@board.firstMatrixJ1, expected_j1)
+    assert_equal(@board.first_matrix_j1, expected_j1)
   end
 
-  def test_wrong_ship_place
-    # posición vertical en penúltima fila
-    # @controller.handleShipPosition(4, 82, 2)
-  end
-
-  def test_ship_out_of_range
-    # @controller.handleShipPosition(3, 120, 2)
-  end
-
-  def test_superposing_ships
-    # @controller.handleShipPosition(5, 1, 1)
-    # @controller.handleShipPosition(2, 3, 1)
+  def test_place_vertical_ship
+    # coloca un barco de largo 4 desde board[4][5]
+    @board.place_vertical_ship(5, 4, 7, 1)
+    expected_j1 =
+      [['*', '*', '*', '*', '*', '*', '*', '*', '*', '*', '*', '*'],
+       ['*', '_', '_', '_', '_', '_', '_', '_', '_', '_', '_', '*'],
+       ['*', '_', '_', '_', '_', '_', '_', '_', '_', '_', '_', '*'],
+       ['*', '_', '_', '_', '_', '_', '_', '_', '_', '_', '_', '*'],
+       ['*', '_', '_', '_', '_', ' i ', '_', '_', '_', '_', '_', '*'],
+       ['*', '_', '_', '_', '_', ' m ', '_', '_', '_', '_', '_', '*'],
+       ['*', '_', '_', '_', '_', ' m ', '_', '_', '_', '_', '_', '*'],
+       ['*', '_', '_', '_', '_', ' f ', '_', '_', '_', '_', '_', '*'],
+       ['*', '_', '_', '_', '_', '_', '_', '_', '_', '_', '_', '*'],
+       ['*', '_', '_', '_', '_', '_', '_', '_', '_', '_', '_', '*'],
+       ['*', '_', '_', '_', '_', '_', '_', '_', '_', '_', '_', '*'],
+       ['*', '*', '*', '*', '*', '*', '*', '*', '*', '*', '*', '*']]
+    assert_equal(@board.first_matrix_j1, expected_j1)
   end
 end

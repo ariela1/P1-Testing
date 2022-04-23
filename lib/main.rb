@@ -9,6 +9,6 @@ view = BoardView.new
 model.addObserver(view)
 controller = BoardController.new(model, view)
 # controller.printBoard
-controller.requestGameModeInput
+controller.request_gamemode_input
 # controller.requestInput
-controller.choiceShips
+controller.choice_ships

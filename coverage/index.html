@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns='http://www.w3.org/1999/xhtml'>
   <head>
-    <title>Code coverage for Tres-en-linea</title>
+    <title>Code coverage for P1-testing</title>
     <meta http-equiv="content-type" content="text/html; charset=utf-8" />
     <script src='./assets/0.12.3/application.js' type='text/javascript'></script>
     <link href='./assets/0.12.3/application.css' media='screen, projection, print' rel='stylesheet' type='text/css' />
@@ -14,7 +14,7 @@
       <img src="./assets/0.12.3/loading.gif" alt="loading"/>
     </div>
     <div id="wrapper" class="hide">
-      <div class="timestamp">Generated <abbr class="timeago" title="2022-04-05T11:46:59-04:00">2022-04-05T11:46:59-04:00</abbr></div>
+      <div class="timestamp">Generated <abbr class="timeago" title="2022-04-23T17:55:49-04:00">2022-04-23T17:55:49-04:00</abbr></div>
       <ul class="group_tabs"></ul>
 
       <div id="content">
@@ -23,14 +23,14 @@
     <span class="group_name">All Files</span>
     (<span class="covered_percent">
       <span class="red">
-  73.17%
+  75.0%
 </span>
 
      </span>
      covered at
      <span class="covered_strength">
        <span class="green">
-         4.32
+         1.89
        </span>
     </span> hits/line
     )
@@ -43,11 +43,11 @@
   </div>
 
   <div class="t-line-summary">
-    <b>41</b> relevant lines,
-    <span class="green"><b>30</b> lines covered</span> and
-    <span class="red"><b>11</b> lines missed. </span>
+    <b>64</b> relevant lines,
+    <span class="green"><b>48</b> lines covered</span> and
+    <span class="red"><b>16</b> lines missed. </span>
     (<span class="red">
-  73.17%
+  75.0%
 </span>
 )
   </div>
@@ -71,24 +71,24 @@
       <tbody>
         
           <tr class="t-file">
-            <td class="strong t-file__name"><a href="#b258c0f80d4f24b42463572888e14bff2f2e34c5" class="src_link" title="lib/board_model.rb">lib/board_model.rb</a></td>
-            <td class="red strong cell--number t-file__coverage">73.53 %</td>
-            <td class="cell--number">65</td>
-            <td class="cell--number">34</td>
-            <td class="cell--number">25</td>
-            <td class="cell--number">9</td>
-            <td class="cell--number">4.88</td>
+            <td class="strong t-file__name"><a href="#5bf5a45430c432050d99fdaf76445d341f5c423b" class="src_link" title="lib/board_model.rb">lib/board_model.rb</a></td>
+            <td class="red strong cell--number t-file__coverage">75.44 %</td>
+            <td class="cell--number">124</td>
+            <td class="cell--number">57</td>
+            <td class="cell--number">43</td>
+            <td class="cell--number">14</td>
+            <td class="cell--number">1.98</td>
             
           </tr>
         
           <tr class="t-file">
-            <td class="strong t-file__name"><a href="#54a8904a96fcaa065239d89ec4688ff3b4078f53" class="src_link" title="lib/observer/observable.rb">lib/observer/observable.rb</a></td>
+            <td class="strong t-file__name"><a href="#9729b1a93a82bb3243d585d305fddae55690aa28" class="src_link" title="lib/observer/observable.rb">lib/observer/observable.rb</a></td>
             <td class="red strong cell--number t-file__coverage">71.43 %</td>
-            <td class="cell--number">13</td>
+            <td class="cell--number">15</td>
             <td class="cell--number">7</td>
             <td class="cell--number">5</td>
             <td class="cell--number">2</td>
-            <td class="cell--number">1.57</td>
+            <td class="cell--number">1.14</td>
             
           </tr>
         
@@ -109,12 +109,12 @@
 
       <div class="source_files">
       
-        <div class="source_table" id="b258c0f80d4f24b42463572888e14bff2f2e34c5">
+        <div class="source_table" id="5bf5a45430c432050d99fdaf76445d341f5c423b">
   <div class="header">
     <h3>lib/board_model.rb</h3>
     <h4>
       <span class="red">
-  73.53%
+  75.44%
 </span>
 
       lines covered
@@ -123,9 +123,9 @@
     
 
     <div class="t-line-summary">
-      <b>34</b> relevant lines.
-      <span class="green"><b>25</b> lines covered</span> and
-      <span class="red"><b>9</b> lines missed.</span>
+      <b>57</b> relevant lines.
+      <span class="green"><b>43</b> lines covered</span> and
+      <span class="red"><b>14</b> lines missed.</span>
     </div>
 
     
@@ -147,13 +147,13 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="2">
-            <span class="hits">1</span>
+          <li class="never" data-hits="" data-linenumber="2">
+            
             
 
             
 
-            <code class="ruby">require_relative &#39;./observer/observable&#39;</code>
+            <code class="ruby"></code>
           </li>
         </div>
       
@@ -164,7 +164,7 @@
 
             
 
-            <code class="ruby">require &#39;matrix&#39;</code>
+            <code class="ruby">require_relative &#39;./observer/observable&#39;</code>
           </li>
         </div>
       
@@ -180,13 +180,13 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="5">
-            <span class="hits">1</span>
+          <li class="never" data-hits="" data-linenumber="5">
+            
             
 
             
 
-            <code class="ruby">class Board &lt; Observable</code>
+            <code class="ruby"># Modelo del tablero</code>
           </li>
         </div>
       
@@ -197,18 +197,18 @@
 
             
 
-            <code class="ruby">    def initialize(initialMatrix = [</code>
+            <code class="ruby">class Board &lt; Observable</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="7">
-            
-            
-
+          <li class="covered" data-hits="1" data-linenumber="7">
+            <span class="hits">1</span>
             
 
-            <code class="ruby">      [&#39;*&#39;,&#39;*&#39;,&#39;*&#39;,&#39;*&#39;,&#39;*&#39;],</code>
+            
+
+            <code class="ruby">  attr_accessor :mode, :first_matrix_j1, :second_matrix_j1, :first_matrix_j2, :second_matrix_j2, :difficulty</code>
           </li>
         </div>
       
@@ -219,78 +219,111 @@
 
             
 
-            <code class="ruby">      [&#39;*&#39;,&#39;_&#39;,&#39;_&#39;,&#39;_&#39;,&#39;*&#39;],</code>
+            <code class="ruby"></code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="9">
-            
-            
-
+          <li class="covered" data-hits="1" data-linenumber="9">
+            <span class="hits">1</span>
             
 
-            <code class="ruby">      [&#39;*&#39;,&#39;_&#39;,&#39;_&#39;,&#39;_&#39;,&#39;*&#39;],</code>
+            
+
+            <code class="ruby">  def initialize</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="10">
-            
-            
-
+          <li class="covered" data-hits="4" data-linenumber="10">
+            <span class="hits">4</span>
             
 
-            <code class="ruby">      [&#39;*&#39;,&#39;_&#39;,&#39;_&#39;,&#39;_&#39;,&#39;*&#39;],</code>
+            
+
+            <code class="ruby">    super()</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="11">
-            
-            
-
+          <li class="covered" data-hits="4" data-linenumber="11">
+            <span class="hits">4</span>
             
 
-            <code class="ruby">      [&#39;*&#39;,&#39;*&#39;,&#39;*&#39;,&#39;*&#39;,&#39;*&#39;]])</code>
+            
+
+            <code class="ruby">    @first_matrix_j1 = []</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="7" data-linenumber="12">
-            <span class="hits">7</span>
+          <li class="covered" data-hits="4" data-linenumber="12">
+            <span class="hits">4</span>
             
 
             
 
-            <code class="ruby">      super()</code>
+            <code class="ruby">    @second_matrix_j1 = []</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="7" data-linenumber="13">
-            <span class="hits">7</span>
+          <li class="covered" data-hits="4" data-linenumber="13">
+            <span class="hits">4</span>
             
 
             
 
-            <code class="ruby">      @matrix = initialMatrix</code>
+            <code class="ruby">    @first_matrix_j2 = []</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="14">
-            
-            
-
+          <li class="covered" data-hits="4" data-linenumber="14">
+            <span class="hits">4</span>
             
 
-            <code class="ruby">    end</code>
+            
+
+            <code class="ruby">    @second_matrix_j2 = []</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="15">
+          <li class="covered" data-hits="4" data-linenumber="15">
+            <span class="hits">4</span>
+            
+
+            
+
+            <code class="ruby">    @mode = 0</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="4" data-linenumber="16">
+            <span class="hits">4</span>
+            
+
+            
+
+            <code class="ruby">    @difficulty = 0</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="17">
+            
+            
+
+            
+
+            <code class="ruby">  end</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="18">
             
             
 
@@ -301,46 +334,13 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="16">
+          <li class="covered" data-hits="1" data-linenumber="19">
             <span class="hits">1</span>
             
 
             
 
-            <code class="ruby">    def mark(xo, yo, symbol)</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="missed" data-hits="0" data-linenumber="17">
-            
-            
-
-            
-
-            <code class="ruby">      @matrix[xo][yo] = symbol</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="missed" data-hits="0" data-linenumber="18">
-            
-            
-
-            
-
-            <code class="ruby">      notifyAll()</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="19">
-            
-            
-
-            
-
-            <code class="ruby">    end</code>
+            <code class="ruby">  def set_difficulty_easy</code>
           </li>
         </div>
       
@@ -351,29 +351,29 @@
 
             
 
-            <code class="ruby"></code>
+            <code class="ruby">    easy_board =</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="21">
-            <span class="hits">1</span>
+          <li class="covered" data-hits="3" data-linenumber="21">
+            <span class="hits">3</span>
             
 
             
 
-            <code class="ruby">    def symbolAt(xo,yo)</code>
+            <code class="ruby">      [[&#39;*&#39;, &#39;*&#39;, &#39;*&#39;, &#39;*&#39;, &#39;*&#39;, &#39;*&#39;, &#39;*&#39;, &#39;*&#39;, &#39;*&#39;, &#39;*&#39;, &#39;*&#39;, &#39;*&#39;],</code>
           </li>
         </div>
       
         <div>
-          <li class="missed" data-hits="0" data-linenumber="22">
+          <li class="never" data-hits="" data-linenumber="22">
             
             
 
             
 
-            <code class="ruby">      @matrix[xo][yo]</code>
+            <code class="ruby">       [&#39;*&#39;, &#39;_&#39;, &#39;_&#39;, &#39;_&#39;, &#39;_&#39;, &#39;_&#39;, &#39;_&#39;, &#39;_&#39;, &#39;_&#39;, &#39;_&#39;, &#39;_&#39;, &#39;*&#39;],</code>
           </li>
         </div>
       
@@ -384,7 +384,7 @@
 
             
 
-            <code class="ruby">    end</code>
+            <code class="ruby">       [&#39;*&#39;, &#39;_&#39;, &#39;_&#39;, &#39;_&#39;, &#39;_&#39;, &#39;_&#39;, &#39;_&#39;, &#39;_&#39;, &#39;_&#39;, &#39;_&#39;, &#39;_&#39;, &#39;*&#39;],</code>
           </li>
         </div>
       
@@ -395,62 +395,62 @@
 
             
 
-            <code class="ruby"></code>
+            <code class="ruby">       [&#39;*&#39;, &#39;_&#39;, &#39;_&#39;, &#39;_&#39;, &#39;_&#39;, &#39;_&#39;, &#39;_&#39;, &#39;_&#39;, &#39;_&#39;, &#39;_&#39;, &#39;_&#39;, &#39;*&#39;],</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="25">
-            <span class="hits">1</span>
+          <li class="never" data-hits="" data-linenumber="25">
+            
             
 
             
 
-            <code class="ruby">    def winner(symbol)</code>
+            <code class="ruby">       [&#39;*&#39;, &#39;_&#39;, &#39;_&#39;, &#39;_&#39;, &#39;_&#39;, &#39;_&#39;, &#39;_&#39;, &#39;_&#39;, &#39;_&#39;, &#39;_&#39;, &#39;_&#39;, &#39;*&#39;],</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="8" data-linenumber="26">
-            <span class="hits">8</span>
+          <li class="never" data-hits="" data-linenumber="26">
+            
             
 
             
 
-            <code class="ruby">      for i in 1..3</code>
+            <code class="ruby">       [&#39;*&#39;, &#39;_&#39;, &#39;_&#39;, &#39;_&#39;, &#39;_&#39;, &#39;_&#39;, &#39;_&#39;, &#39;_&#39;, &#39;_&#39;, &#39;_&#39;, &#39;_&#39;, &#39;*&#39;],</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="19" data-linenumber="27">
-            <span class="hits">19</span>
+          <li class="never" data-hits="" data-linenumber="27">
+            
             
 
             
 
-            <code class="ruby">        for j in 1..3</code>
+            <code class="ruby">       [&#39;*&#39;, &#39;_&#39;, &#39;_&#39;, &#39;_&#39;, &#39;_&#39;, &#39;_&#39;, &#39;_&#39;, &#39;_&#39;, &#39;_&#39;, &#39;_&#39;, &#39;_&#39;, &#39;*&#39;],</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="53" data-linenumber="28">
-            <span class="hits">53</span>
+          <li class="never" data-hits="" data-linenumber="28">
+            
             
 
             
 
-            <code class="ruby">          if (@matrix[i][j] == symbol &amp;&amp; sameNeighbors(i,j,symbol))</code>
+            <code class="ruby">       [&#39;*&#39;, &#39;_&#39;, &#39;_&#39;, &#39;_&#39;, &#39;_&#39;, &#39;_&#39;, &#39;_&#39;, &#39;_&#39;, &#39;_&#39;, &#39;_&#39;, &#39;_&#39;, &#39;*&#39;],</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="4" data-linenumber="29">
-            <span class="hits">4</span>
+          <li class="never" data-hits="" data-linenumber="29">
+            
             
 
             
 
-            <code class="ruby">              return true</code>
+            <code class="ruby">       [&#39;*&#39;, &#39;_&#39;, &#39;_&#39;, &#39;_&#39;, &#39;_&#39;, &#39;_&#39;, &#39;_&#39;, &#39;_&#39;, &#39;_&#39;, &#39;_&#39;, &#39;_&#39;, &#39;*&#39;],</code>
           </li>
         </div>
       
@@ -461,7 +461,7 @@
 
             
 
-            <code class="ruby">          end</code>
+            <code class="ruby">       [&#39;*&#39;, &#39;_&#39;, &#39;_&#39;, &#39;_&#39;, &#39;_&#39;, &#39;_&#39;, &#39;_&#39;, &#39;_&#39;, &#39;_&#39;, &#39;_&#39;, &#39;_&#39;, &#39;*&#39;],</code>
           </li>
         </div>
       
@@ -472,7 +472,7 @@
 
             
 
-            <code class="ruby">        end</code>
+            <code class="ruby">       [&#39;*&#39;, &#39;_&#39;, &#39;_&#39;, &#39;_&#39;, &#39;_&#39;, &#39;_&#39;, &#39;_&#39;, &#39;_&#39;, &#39;_&#39;, &#39;_&#39;, &#39;_&#39;, &#39;*&#39;],</code>
           </li>
         </div>
       
@@ -483,62 +483,62 @@
 
             
 
-            <code class="ruby">      end</code>
+            <code class="ruby">       [&#39;*&#39;, &#39;*&#39;, &#39;*&#39;, &#39;*&#39;, &#39;*&#39;, &#39;*&#39;, &#39;*&#39;, &#39;*&#39;, &#39;*&#39;, &#39;*&#39;, &#39;*&#39;, &#39;*&#39;]]</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="4" data-linenumber="33">
-            <span class="hits">4</span>
+          <li class="covered" data-hits="3" data-linenumber="33">
+            <span class="hits">3</span>
             
 
             
 
-            <code class="ruby">      return false</code>
+            <code class="ruby">    @first_matrix_j1 = easy_board.map(&amp;:clone)</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="34">
-            
-            
-
+          <li class="covered" data-hits="3" data-linenumber="34">
+            <span class="hits">3</span>
             
 
-            <code class="ruby">    end</code>
+            
+
+            <code class="ruby">    @second_matrix_j1 = easy_board.map(&amp;:clone)</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="35">
-            
-            
-
+          <li class="covered" data-hits="3" data-linenumber="35">
+            <span class="hits">3</span>
             
 
-            <code class="ruby"></code>
+            
+
+            <code class="ruby">    @first_matrix_j2 = easy_board.map(&amp;:clone)</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="36">
-            <span class="hits">1</span>
+          <li class="covered" data-hits="3" data-linenumber="36">
+            <span class="hits">3</span>
             
 
             
 
-            <code class="ruby">    def sameNeighbors(xo, yo, symbol)</code>
+            <code class="ruby">    @second_matrix_j2 = easy_board.map(&amp;:clone)</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="21" data-linenumber="37">
-            <span class="hits">21</span>
+          <li class="never" data-hits="" data-linenumber="37">
+            
             
 
             
 
-            <code class="ruby">      return (@matrix[xo][yo - 1] == symbol &amp;&amp; @matrix[xo][yo + 1] == symbol) ||  (@matrix[xo - 1][yo] == symbol &amp;&amp; @matrix[xo + 1][yo] == symbol) || (@matrix[xo - 1][yo - 1] == symbol &amp;&amp; @matrix[xo + 1][yo + 1] == symbol) || (@matrix[xo + 1][yo - 1] == symbol &amp;&amp; @matrix[xo - 1][yo + 1] == symbol)</code>
+            <code class="ruby">  end</code>
           </li>
         </div>
       
@@ -549,7 +549,7 @@
 
             
 
-            <code class="ruby">    end</code>
+            <code class="ruby"></code>
           </li>
         </div>
       
@@ -560,29 +560,29 @@
 
             
 
-            <code class="ruby">    def getMark(x,y)</code>
+            <code class="ruby">  def set_difficulty_hard</code>
           </li>
         </div>
       
         <div>
-          <li class="missed" data-hits="0" data-linenumber="40">
+          <li class="never" data-hits="" data-linenumber="40">
             
             
 
             
 
-            <code class="ruby">      return @matrix[x][y]</code>
+            <code class="ruby">    hard_board =</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="41">
-            
-            
-
+          <li class="covered" data-hits="1" data-linenumber="41">
+            <span class="hits">1</span>
             
 
-            <code class="ruby">    end</code>
+            
+
+            <code class="ruby">      [[&#39;*&#39;, &#39;*&#39;, &#39;*&#39;, &#39;*&#39;, &#39;*&#39;, &#39;*&#39;, &#39;*&#39;, &#39;*&#39;, &#39;*&#39;, &#39;*&#39;, &#39;*&#39;, &#39;*&#39;, &#39;*&#39;, &#39;*&#39;, &#39;*&#39;, &#39;*&#39;, &#39;*&#39;],</code>
           </li>
         </div>
       
@@ -593,73 +593,73 @@
 
             
 
-            <code class="ruby"></code>
+            <code class="ruby">       [&#39;*&#39;, &#39;_&#39;, &#39;_&#39;, &#39;_&#39;, &#39;_&#39;, &#39;_&#39;, &#39;_&#39;, &#39;_&#39;, &#39;_&#39;, &#39;_&#39;, &#39;_&#39;, &#39;_&#39;, &#39;_&#39;, &#39;_&#39;, &#39;_&#39;, &#39;_&#39;, &#39;*&#39;],</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="43">
-            <span class="hits">1</span>
+          <li class="never" data-hits="" data-linenumber="43">
+            
             
 
             
 
-            <code class="ruby">    def isFull</code>
+            <code class="ruby">       [&#39;*&#39;, &#39;_&#39;, &#39;_&#39;, &#39;_&#39;, &#39;_&#39;, &#39;_&#39;, &#39;_&#39;, &#39;_&#39;, &#39;_&#39;, &#39;_&#39;, &#39;_&#39;, &#39;_&#39;, &#39;_&#39;, &#39;_&#39;, &#39;_&#39;, &#39;_&#39;, &#39;*&#39;],</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="2" data-linenumber="44">
-            <span class="hits">2</span>
+          <li class="never" data-hits="" data-linenumber="44">
+            
             
 
             
 
-            <code class="ruby">      counter = 0</code>
+            <code class="ruby">       [&#39;*&#39;, &#39;_&#39;, &#39;_&#39;, &#39;_&#39;, &#39;_&#39;, &#39;_&#39;, &#39;_&#39;, &#39;_&#39;, &#39;_&#39;, &#39;_&#39;, &#39;_&#39;, &#39;_&#39;, &#39;_&#39;, &#39;_&#39;, &#39;_&#39;, &#39;_&#39;, &#39;*&#39;],</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="2" data-linenumber="45">
-            <span class="hits">2</span>
+          <li class="never" data-hits="" data-linenumber="45">
+            
             
 
             
 
-            <code class="ruby">      for i in 1..3</code>
+            <code class="ruby">       [&#39;*&#39;, &#39;_&#39;, &#39;_&#39;, &#39;_&#39;, &#39;_&#39;, &#39;_&#39;, &#39;_&#39;, &#39;_&#39;, &#39;_&#39;, &#39;_&#39;, &#39;_&#39;, &#39;_&#39;, &#39;_&#39;, &#39;_&#39;, &#39;_&#39;, &#39;_&#39;, &#39;*&#39;],</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="6" data-linenumber="46">
-            <span class="hits">6</span>
+          <li class="never" data-hits="" data-linenumber="46">
+            
             
 
             
 
-            <code class="ruby">        for j in 1..3</code>
+            <code class="ruby">       [&#39;*&#39;, &#39;_&#39;, &#39;_&#39;, &#39;_&#39;, &#39;_&#39;, &#39;_&#39;, &#39;_&#39;, &#39;_&#39;, &#39;_&#39;, &#39;_&#39;, &#39;_&#39;, &#39;_&#39;, &#39;_&#39;, &#39;_&#39;, &#39;_&#39;, &#39;_&#39;, &#39;*&#39;],</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="18" data-linenumber="47">
-            <span class="hits">18</span>
+          <li class="never" data-hits="" data-linenumber="47">
+            
             
 
             
 
-            <code class="ruby">          if (@matrix[i][j] == &#39;_&#39;)</code>
+            <code class="ruby">       [&#39;*&#39;, &#39;_&#39;, &#39;_&#39;, &#39;_&#39;, &#39;_&#39;, &#39;_&#39;, &#39;_&#39;, &#39;_&#39;, &#39;_&#39;, &#39;_&#39;, &#39;_&#39;, &#39;_&#39;, &#39;_&#39;, &#39;_&#39;, &#39;_&#39;, &#39;_&#39;, &#39;*&#39;],</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="2" data-linenumber="48">
-            <span class="hits">2</span>
+          <li class="never" data-hits="" data-linenumber="48">
+            
             
 
             
 
-            <code class="ruby">              counter += 1</code>
+            <code class="ruby">       [&#39;*&#39;, &#39;_&#39;, &#39;_&#39;, &#39;_&#39;, &#39;_&#39;, &#39;_&#39;, &#39;_&#39;, &#39;_&#39;, &#39;_&#39;, &#39;_&#39;, &#39;_&#39;, &#39;_&#39;, &#39;_&#39;, &#39;_&#39;, &#39;_&#39;, &#39;_&#39;, &#39;*&#39;],</code>
           </li>
         </div>
       
@@ -670,7 +670,7 @@
 
             
 
-            <code class="ruby">          end</code>
+            <code class="ruby">       [&#39;*&#39;, &#39;_&#39;, &#39;_&#39;, &#39;_&#39;, &#39;_&#39;, &#39;_&#39;, &#39;_&#39;, &#39;_&#39;, &#39;_&#39;, &#39;_&#39;, &#39;_&#39;, &#39;_&#39;, &#39;_&#39;, &#39;_&#39;, &#39;_&#39;, &#39;_&#39;, &#39;*&#39;],</code>
           </li>
         </div>
       
@@ -681,7 +681,7 @@
 
             
 
-            <code class="ruby">        end</code>
+            <code class="ruby">       [&#39;*&#39;, &#39;_&#39;, &#39;_&#39;, &#39;_&#39;, &#39;_&#39;, &#39;_&#39;, &#39;_&#39;, &#39;_&#39;, &#39;_&#39;, &#39;_&#39;, &#39;_&#39;, &#39;_&#39;, &#39;_&#39;, &#39;_&#39;, &#39;_&#39;, &#39;_&#39;, &#39;*&#39;],</code>
           </li>
         </div>
       
@@ -692,18 +692,18 @@
 
             
 
-            <code class="ruby">      end</code>
+            <code class="ruby">       [&#39;*&#39;, &#39;_&#39;, &#39;_&#39;, &#39;_&#39;, &#39;_&#39;, &#39;_&#39;, &#39;_&#39;, &#39;_&#39;, &#39;_&#39;, &#39;_&#39;, &#39;_&#39;, &#39;_&#39;, &#39;_&#39;, &#39;_&#39;, &#39;_&#39;, &#39;_&#39;, &#39;*&#39;],</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="2" data-linenumber="52">
-            <span class="hits">2</span>
+          <li class="never" data-hits="" data-linenumber="52">
+            
             
 
             
 
-            <code class="ruby">      return counter == 0</code>
+            <code class="ruby">       [&#39;*&#39;, &#39;_&#39;, &#39;_&#39;, &#39;_&#39;, &#39;_&#39;, &#39;_&#39;, &#39;_&#39;, &#39;_&#39;, &#39;_&#39;, &#39;_&#39;, &#39;_&#39;, &#39;_&#39;, &#39;_&#39;, &#39;_&#39;, &#39;_&#39;, &#39;_&#39;, &#39;*&#39;],</code>
           </li>
         </div>
       
@@ -714,7 +714,7 @@
 
             
 
-            <code class="ruby">    end</code>
+            <code class="ruby">       [&#39;*&#39;, &#39;_&#39;, &#39;_&#39;, &#39;_&#39;, &#39;_&#39;, &#39;_&#39;, &#39;_&#39;, &#39;_&#39;, &#39;_&#39;, &#39;_&#39;, &#39;_&#39;, &#39;_&#39;, &#39;_&#39;, &#39;_&#39;, &#39;_&#39;, &#39;_&#39;, &#39;*&#39;],</code>
           </li>
         </div>
       
@@ -725,84 +725,84 @@
 
             
 
-            <code class="ruby"></code>
+            <code class="ruby">       [&#39;*&#39;, &#39;_&#39;, &#39;_&#39;, &#39;_&#39;, &#39;_&#39;, &#39;_&#39;, &#39;_&#39;, &#39;_&#39;, &#39;_&#39;, &#39;_&#39;, &#39;_&#39;, &#39;_&#39;, &#39;_&#39;, &#39;_&#39;, &#39;_&#39;, &#39;_&#39;, &#39;*&#39;],</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="55">
+          <li class="never" data-hits="" data-linenumber="55">
+            
+            
+
+            
+
+            <code class="ruby">       [&#39;*&#39;, &#39;_&#39;, &#39;_&#39;, &#39;_&#39;, &#39;_&#39;, &#39;_&#39;, &#39;_&#39;, &#39;_&#39;, &#39;_&#39;, &#39;_&#39;, &#39;_&#39;, &#39;_&#39;, &#39;_&#39;, &#39;_&#39;, &#39;_&#39;, &#39;_&#39;, &#39;*&#39;],</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="56">
+            
+            
+
+            
+
+            <code class="ruby">       [&#39;*&#39;, &#39;_&#39;, &#39;_&#39;, &#39;_&#39;, &#39;_&#39;, &#39;_&#39;, &#39;_&#39;, &#39;_&#39;, &#39;_&#39;, &#39;_&#39;, &#39;_&#39;, &#39;_&#39;, &#39;_&#39;, &#39;_&#39;, &#39;_&#39;, &#39;_&#39;, &#39;*&#39;],</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="57">
+            
+            
+
+            
+
+            <code class="ruby">       [&#39;*&#39;, &#39;*&#39;, &#39;*&#39;, &#39;*&#39;, &#39;*&#39;, &#39;*&#39;, &#39;*&#39;, &#39;*&#39;, &#39;*&#39;, &#39;*&#39;, &#39;*&#39;, &#39;*&#39;, &#39;*&#39;, &#39;*&#39;, &#39;*&#39;, &#39;*&#39;, &#39;*&#39;]]</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="58">
             <span class="hits">1</span>
             
 
             
 
-            <code class="ruby">    def equal(otherBoard)</code>
+            <code class="ruby">    @first_matrix_j1 = hard_board.map(&amp;:clone)</code>
           </li>
         </div>
       
         <div>
-          <li class="missed" data-hits="0" data-linenumber="56">
-            
-            
-
+          <li class="covered" data-hits="1" data-linenumber="59">
+            <span class="hits">1</span>
             
 
-            <code class="ruby">      for i in 1..3</code>
+            
+
+            <code class="ruby">    @second_matrix_j1 = hard_board.map(&amp;:clone)</code>
           </li>
         </div>
       
         <div>
-          <li class="missed" data-hits="0" data-linenumber="57">
-            
-            
-
+          <li class="covered" data-hits="1" data-linenumber="60">
+            <span class="hits">1</span>
             
 
-            <code class="ruby">        for j in 1..3</code>
+            
+
+            <code class="ruby">    @first_matrix_j2 = hard_board.map(&amp;:clone)</code>
           </li>
         </div>
       
         <div>
-          <li class="missed" data-hits="0" data-linenumber="58">
-            
-            
-
-            
-
-            <code class="ruby">          if @matrix[i][j] != otherBoard.getMark(i,j)</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="missed" data-hits="0" data-linenumber="59">
-            
+          <li class="covered" data-hits="1" data-linenumber="61">
+            <span class="hits">1</span>
             
 
             
 
-            <code class="ruby">              return false</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="60">
-            
-            
-
-            
-
-            <code class="ruby">          end</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="61">
-            
-            
-
-            
-
-            <code class="ruby">        end</code>
+            <code class="ruby">    @second_matrix_j2 = hard_board.map(&amp;:clone)</code>
           </li>
         </div>
       
@@ -813,23 +813,78 @@
 
             
 
-            <code class="ruby">      end</code>
+            <code class="ruby">  end</code>
           </li>
         </div>
       
         <div>
-          <li class="missed" data-hits="0" data-linenumber="63">
+          <li class="never" data-hits="" data-linenumber="63">
             
             
 
             
 
-            <code class="ruby">      return true</code>
+            <code class="ruby"></code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="64">
+          <li class="covered" data-hits="1" data-linenumber="64">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">  def rows</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="missed" data-hits="0" data-linenumber="65">
+            
+            
+
+            
+
+            <code class="ruby">    if @difficulty == 1</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="missed" data-hits="0" data-linenumber="66">
+            
+            
+
+            
+
+            <code class="ruby">      10</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="67">
+            
+            
+
+            
+
+            <code class="ruby">    else</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="missed" data-hits="0" data-linenumber="68">
+            
+            
+
+            
+
+            <code class="ruby">      15</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="69">
             
             
 
@@ -840,7 +895,601 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="65">
+          <li class="never" data-hits="" data-linenumber="70">
+            
+            
+
+            
+
+            <code class="ruby">  end</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="71">
+            
+            
+
+            
+
+            <code class="ruby"></code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="72">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">  def place_vertical_ship(xpos, ypos, y_fin, player)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="73">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">    (ypos..y_fin).each do |posicion|</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="4" data-linenumber="74">
+            <span class="hits">4</span>
+            
+
+            
+
+            <code class="ruby">      if posicion == ypos</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="75">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">        mark(posicion, xpos, &#39; i &#39;, player, 1)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="3" data-linenumber="76">
+            <span class="hits">3</span>
+            
+
+            
+
+            <code class="ruby">      elsif posicion == y_fin</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="77">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">        mark(posicion, xpos, &#39; f &#39;, player, 1)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="78">
+            
+            
+
+            
+
+            <code class="ruby">      else</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="2" data-linenumber="79">
+            <span class="hits">2</span>
+            
+
+            
+
+            <code class="ruby">        mark(posicion, xpos, &#39; m &#39;, player, 1)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="80">
+            
+            
+
+            
+
+            <code class="ruby">      end</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="81">
+            
+            
+
+            
+
+            <code class="ruby">    end</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="82">
+            
+            
+
+            
+
+            <code class="ruby">  end</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="83">
+            
+            
+
+            
+
+            <code class="ruby"></code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="84">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">  def place_horizontal_ship(xpos, ypos, x_fin, player)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="85">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">    (xpos..x_fin).each do |posicion|</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="5" data-linenumber="86">
+            <span class="hits">5</span>
+            
+
+            
+
+            <code class="ruby">      if posicion == xpos</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="87">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">        mark(ypos, posicion, &#39; i &#39;, player, 1)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="4" data-linenumber="88">
+            <span class="hits">4</span>
+            
+
+            
+
+            <code class="ruby">      elsif posicion == x_fin</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="89">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">        mark(ypos, posicion, &#39; f &#39;, player, 1)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="90">
+            
+            
+
+            
+
+            <code class="ruby">      else</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="3" data-linenumber="91">
+            <span class="hits">3</span>
+            
+
+            
+
+            <code class="ruby">        mark(ypos, posicion, &#39; m &#39;, player, 1)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="92">
+            
+            
+
+            
+
+            <code class="ruby">      end</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="93">
+            
+            
+
+            
+
+            <code class="ruby">    end</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="94">
+            
+            
+
+            
+
+            <code class="ruby">  end</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="95">
+            
+            
+
+            
+
+            <code class="ruby"></code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="96">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">  def mark(xo_pos, yo_pos, symbol, player, type)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="97">
+            
+            
+
+            
+
+            <code class="ruby">    # marcar simbolo en la coordenada especificada</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="9" data-linenumber="98">
+            <span class="hits">9</span>
+            
+
+            
+
+            <code class="ruby">    if player == 1</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="9" data-linenumber="99">
+            <span class="hits">9</span>
+            
+
+            
+
+            <code class="ruby">      if type == 1</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="9" data-linenumber="100">
+            <span class="hits">9</span>
+            
+
+            
+
+            <code class="ruby">        @first_matrix_j1[xo_pos][yo_pos] = symbol</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="101">
+            
+            
+
+            
+
+            <code class="ruby">      else</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="missed" data-hits="0" data-linenumber="102">
+            
+            
+
+            
+
+            <code class="ruby">        @second_matrix_j1[xo_pos][yo_pos] = symbol</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="103">
+            
+            
+
+            
+
+            <code class="ruby">      end</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="missed" data-hits="0" data-linenumber="104">
+            
+            
+
+            
+
+            <code class="ruby">    elsif type == 1</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="missed" data-hits="0" data-linenumber="105">
+            
+            
+
+            
+
+            <code class="ruby">      @first_matrix_j2[xo_pos][yo_pos] = symbol</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="106">
+            
+            
+
+            
+
+            <code class="ruby">    else</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="missed" data-hits="0" data-linenumber="107">
+            
+            
+
+            
+
+            <code class="ruby">      @second_matrix_j2[xo_pos][yo_pos] = symbol</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="108">
+            
+            
+
+            
+
+            <code class="ruby">    end</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="109">
+            
+            
+
+            
+
+            <code class="ruby">  end</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="110">
+            
+            
+
+            
+
+            <code class="ruby"></code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="111">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">  def symbol_at(xo_pos, yo_pos, player, type)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="missed" data-hits="0" data-linenumber="112">
+            
+            
+
+            
+
+            <code class="ruby">    if player == 1</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="missed" data-hits="0" data-linenumber="113">
+            
+            
+
+            
+
+            <code class="ruby">      if type == 1</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="missed" data-hits="0" data-linenumber="114">
+            
+            
+
+            
+
+            <code class="ruby">        @first_matrix_j1[xo_pos][yo_pos]</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="115">
+            
+            
+
+            
+
+            <code class="ruby">      else</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="missed" data-hits="0" data-linenumber="116">
+            
+            
+
+            
+
+            <code class="ruby">        @second_matrix_j1[xo_pos][yo_pos]</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="117">
+            
+            
+
+            
+
+            <code class="ruby">      end</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="missed" data-hits="0" data-linenumber="118">
+            
+            
+
+            
+
+            <code class="ruby">    elsif type == 1</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="missed" data-hits="0" data-linenumber="119">
+            
+            
+
+            
+
+            <code class="ruby">      @first_matrix_j2[xo_pos][yo_pos]</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="120">
+            
+            
+
+            
+
+            <code class="ruby">    else</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="missed" data-hits="0" data-linenumber="121">
+            
+            
+
+            
+
+            <code class="ruby">      @second_matrix_j2[xo_pos][yo_pos]</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="122">
+            
+            
+
+            
+
+            <code class="ruby">    end</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="123">
+            
+            
+
+            
+
+            <code class="ruby">  end</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="124">
             
             
 
@@ -855,7 +1504,7 @@
 </div>
 
       
-        <div class="source_table" id="54a8904a96fcaa065239d89ec4688ff3b4078f53">
+        <div class="source_table" id="9729b1a93a82bb3243d585d305fddae55690aa28">
   <div class="header">
     <h3>lib/observer/observable.rb</h3>
     <h4>
@@ -926,13 +1575,13 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="7" data-linenumber="5">
-            <span class="hits">7</span>
+          <li class="covered" data-hits="4" data-linenumber="5">
+            <span class="hits">4</span>
             
 
             
 
-            <code class="ruby">    @observers = Array.new</code>
+            <code class="ruby">    @observers = []</code>
           </li>
         </div>
       
@@ -948,7 +1597,18 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="7">
+          <li class="never" data-hits="" data-linenumber="7">
+            
+            
+
+            
+
+            <code class="ruby"></code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="8">
             <span class="hits">1</span>
             
 
@@ -959,7 +1619,7 @@
         </div>
       
         <div>
-          <li class="missed" data-hits="0" data-linenumber="8">
+          <li class="missed" data-hits="0" data-linenumber="9">
             
             
 
@@ -970,7 +1630,7 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="9">
+          <li class="never" data-hits="" data-linenumber="10">
             
             
 
@@ -981,7 +1641,18 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="10">
+          <li class="never" data-hits="" data-linenumber="11">
+            
+            
+
+            
+
+            <code class="ruby"></code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="12">
             <span class="hits">1</span>
             
 
@@ -992,7 +1663,7 @@
         </div>
       
         <div>
-          <li class="missed" data-hits="0" data-linenumber="11">
+          <li class="missed" data-hits="0" data-linenumber="13">
             
             
 
@@ -1003,7 +1674,7 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="12">
+          <li class="never" data-hits="" data-linenumber="14">
             
             
 
@@ -1014,7 +1685,7 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="13">
+          <li class="never" data-hits="" data-linenumber="15">
             
             
 

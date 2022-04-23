@@ -5,8 +5,8 @@ require_relative './observer/observer'
 
 # Vista del juego en consola
 class BoardView < Observer
-  def printGameModeOptions(firstAttempt)
-    if firstAttempt
+  def print_gamemode_options(first_attempt)
+    if first_attempt
       print "Selecciona un modo de juego\n"
     else
       print "Opción no válida: Selecciona un modo de juego\n"
@@ -15,8 +15,8 @@ class BoardView < Observer
     print "[2] Uno contra uno\n"
   end
 
-  def printGameDifficultyOptions(firstAttempt)
-    if firstAttempt
+  def print_gamedifficulty_options(first_attempt)
+    if first_attempt
       print "\nSelecciona una dificultad\n"
     else
       print "\nOpción no válida: Selecciona una dificultad\n"
@@ -25,27 +25,27 @@ class BoardView < Observer
     print "[2] Difícil\n"
   end
 
-  def printPlayersTurns(player)
+  def print_player_turns(player)
     puts "\nTurno del jugardor #{player}"
   end
 
-  def printPlayerBoard(boardModel, player)
+  def print_player_board(board_model, player)
     puts "\nTABLERO DEL JUGADOR"
-    printBoard(boardModel, player, 1)
+    print_board(board_model, player, 1)
   end
 
-  def printOpponentBoard(boardModel, player)
+  def print_opponent_board(board_model, player)
     puts "\nTABLERO DEL OPONENTE"
-    printBoard(boardModel, player, 2)
+    print_board(board_model, player, 2)
   end
 
   # La lógica cambia segun se imprime para el jugador o el oponente
-  def printBoard(boardModel, player, type)
+  def print_board(board_model, player, type)
     pos = 1
-    (1..boardModel.rows).each do |i|
+    (1..board_model.rows).each do |i|
       print '|'
-      (1..boardModel.rows).each do |j|
-        symbol = boardModel.symbolAt(i, j, player, type)
+      (1..board_model.rows).each do |j|
+        symbol = board_model.symbol_at(i, j, player, type)
         if symbol == '_'
           if pos <= 9
             print " #{pos} |"
@@ -64,17 +64,17 @@ class BoardView < Observer
     $stdout.flush
   end
 
-  def printShipPositionOptions(size)
+  def print_ship_position_options(size)
     puts "\nSelecciona posicion para agregar barco de tamaño #{size}"
   end
 
-  def printShipDimensionOptions
+  def print_ship_dimension_options
     print "\nSelecciona sentido del barco:\n"
     print "[1] Horizontal\n"
     print "[2] Vertical\n"
   end
 
-  def printErrorShipPosition(code)
+  def print_error_ship_position(code)
     case code
     when 0
       puts "\nCelda no se encuentra en el tablero"
@@ -85,45 +85,4 @@ class BoardView < Observer
 
     end
   end
-
-  # def printBoard(boardModel)
-  #   pos = 1
-  #   for i in 1..3
-  #     print "|"
-  #     for j in 1..3
-  #       symbol = boardModel.symbolAt(i,j)
-  #       if symbol == '_'
-  #         print "#{pos}|"
-  #       else
-  #         print "#{symbol}|"
-  #       end
-  #       pos += 1
-  #     end
-  #     print "\n"
-  #   end
-  #   STDOUT.flush
-  # end
-
-  # def update(boardModel)
-  # clean
-  # printBoard(boardModel)
-  # end
-
-  # def congratulate(playerSymbol)
-  #   clean
-  #   print "Player: #{playerSymbol} WINS\n"
-  # end
-
-  # def gameOver()
-  #   clean
-  #   print "GG - NO SKILL\n"
-  # end
-
-  # def clean
-  #   # TODO
-  # end
-
-  # def printOptions(playerSymbol)
-  #   print "select a position #{playerSymbol}\n"
-  # end
 end
