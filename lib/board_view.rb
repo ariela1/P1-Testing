@@ -1,36 +1,33 @@
 # frozen_string_literal: true
-require  'matrix'
+
+require 'matrix'
 require_relative './observer/observer'
 
+# Vista del juego en consola
 class BoardView < Observer
-  
   def printGameModeOptions(firstAttempt)
     if firstAttempt
       print "Selecciona un modo de juego\n"
-      print "[1] Contra el computador\n"
-      print "[2] Uno contra uno\n"
     else
       print "Opción no válida: Selecciona un modo de juego\n"
-      print "[1] Contra el computador\n"
-      print "[2] Uno contra uno\n"
     end
+    print "[1] Contra el computador\n"
+    print "[2] Uno contra uno\n"
   end
 
   def printGameDifficultyOptions(firstAttempt)
     if firstAttempt
       print "\nSelecciona una dificultad\n"
-      print "[1] Fácil\n"
-      print "[2] Difícil\n"
     else
       print "\nOpción no válida: Selecciona una dificultad\n"
-      print "[1] Fácil\n"
-      print "[2] Difícil\n"
     end
+    print "[1] Fácil\n"
+    print "[2] Difícil\n"
   end
 
   def printPlayersTurns(player)
     puts "\nTurno del jugardor #{player}"
-  end 
+  end
 
   def printPlayerBoard(boardModel, player)
     puts "\nTABLERO DEL JUGADOR"
@@ -41,14 +38,14 @@ class BoardView < Observer
     puts "\nTABLERO DEL OPONENTE"
     printBoard(boardModel, player, 2)
   end
-  
+
   # La lógica cambia segun se imprime para el jugador o el oponente
   def printBoard(boardModel, player, type)
     pos = 1
-    for i in 1..boardModel.rows
-      print "|"
-      for j in 1..boardModel.rows
-        symbol = boardModel.symbolAt(i,j, player, type)
+    (1..boardModel.rows).each do |i|
+      print '|'
+      (1..boardModel.rows).each do |j|
+        symbol = boardModel.symbolAt(i, j, player, type)
         if symbol == '_'
           if pos <= 9
             print " #{pos} |"
@@ -64,7 +61,7 @@ class BoardView < Observer
       end
       print "\n"
     end
-    STDOUT.flush
+    $stdout.flush
   end
 
   def printShipPositionOptions(size)
@@ -78,16 +75,16 @@ class BoardView < Observer
   end
 
   def printErrorShipPosition(code)
-    if code == 0
+    case code
+    when 0
       puts "\nCelda no se encuentra en el tablero"
-    elsif code == 1
+    when 1
       puts "\nBarco no cabe en el tablero"
-    elsif code == 2
+    when 2
       puts "\nCelda o celdas ocupadas por otro barco"
 
     end
   end
-
 
   # def printBoard(boardModel)
   #   pos = 1
@@ -108,15 +105,15 @@ class BoardView < Observer
   # end
 
   # def update(boardModel)
-    # clean
-    # printBoard(boardModel)
+  # clean
+  # printBoard(boardModel)
   # end
 
   # def congratulate(playerSymbol)
   #   clean
   #   print "Player: #{playerSymbol} WINS\n"
   # end
-  
+
   # def gameOver()
   #   clean
   #   print "GG - NO SKILL\n"
@@ -126,9 +123,7 @@ class BoardView < Observer
   #   # TODO
   # end
 
-
   # def printOptions(playerSymbol)
   #   print "select a position #{playerSymbol}\n"
   # end
-
 end
