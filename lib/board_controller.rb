@@ -1,233 +1,148 @@
 # frozen_string_literal: true
 
-class BoardController 
-
-  def initialize(boardModel, boardView)
-    @model = boardModel
-    @view = boardView
+# Revisa lógica del juego
+class BoardController
+  def initialize(board_model, board_view)
+    @model = board_model
+    @view = board_view
     @player = 0
   end
 
-  def requestGameModeInput
-    @view.printGameModeOptions(true)
-    notInOptions = true
+  def request_gamemode_input
+    @view.print_gamemode_options(true)
+    not_in_options = true
     key = 0
-    while notInOptions
+    while not_in_options
       key = $stdin.gets.to_i
-      notInOptions = key != 1 && key != 2
-      if notInOptions
-        @view.printGameModeOptions(false)
-      end
+      not_in_options = key != 1 && key != 2
+      @view.print_gamemode_options(false) if not_in_options
     end
-    handleGameMode(key)
+    handle_gamemode(key)
   end
 
-  def requestGameDifficultyInput
-    @view.printGameDifficultyOptions(true)
-    notInOptions = true
+  def request_gamedifficulty_input
+    @view.print_gamedifficulty_options(true)
+    not_in_options = true
     key = 0
-    while notInOptions
+    while not_in_options
       key = $stdin.gets.to_i
-      notInOptions = key != 1 && key != 2
-      if notInOptions
-        @view.printGameDifficultyOptions(false)
-      end 
+      not_in_options = key != 1 && key != 2
+      @view.print_gamedifficulty_options(false) if not_in_options
     end
-    handleDifficulty(key)
+    handle_difficulty(key)
   end
-  
-  def handleGameMode(key)
+
+  def handle_gamemode(key)
     @model.mode = key
-    requestGameDifficultyInput
+    request_gamedifficulty_input
   end
 
-  def handleDifficulty(diff)
+  def handle_difficulty(diff)
     @model.difficulty = diff
     if diff == 1
-      @model.setDifficultyEasy
+      @model.set_difficulty_easy
     else
-      @model.setDifficultyHard
+      @model.set_difficulty_hard
     end
   end
 
-  def printPlayerAndOpponentBoards
-    # HACER: ver si es necesario el metodo view.clean 
+  def print_boards
+    # HACER: ver si es necesario el metodo view.clean
     # @view.clean
-    @view.printPlayerBoard(@model, @player)
-    @view.printOpponentBoard(@model, @player)
+    @view.print_player_board(@model, @player)
+    @view.print_opponent_board(@model, @player)
   end
 
-  def choiceShips
+  def choice_ships
+    @player = 1
+    @view.print_player_turns(1)
     if @model.mode == 1
-      @player = 1
-      @view.printPlayersTurns(1)
-      @view.printPlayerBoard(@model, @player)
-      shipPosition
-      #### TODO IMPLEMENTAR IA - AGREGAR BARCOS
+    #### TODO IMPLEMENTAR IA - AGREGAR BARCOS
     else
-      @player = 1
-      @view.printPlayersTurns(1)
-      @view.printPlayerBoard(@model, @player)
-      shipPosition
+      @view.print_player_board(@model, @player)
+      ship_position
       @player = 2
-      @view.printPlayersTurns(2)
-      @view.printPlayerBoard(@model, @player)
-      shipPosition
+      @view.print_player_turns(2)
     end
-  end 
+    @view.print_player_board(@model, @player)
+    ship_position
+  end
 
-  def shipPosition
-    if @model.difficulty == 1
-      array = [5,4,3,3,2]
-    else
-      array = [5,5,4,4,3,3,2,2]
-    end 
-    array.each do |e| 
-      requestShipPositionInput(e)
+  def ship_position
+    array = if @model.difficulty == 1
+              [5, 4, 3, 3, 2]
+            else
+              [5, 5, 4, 4, 3, 3, 2, 2]
+            end
+    array.each do |e|
+      request_ship_position_input(e)
     end
   end
 
-  def requestShipPositionInput(size)
-    @view.printShipPositionOptions(size)
+  def request_ship_position_input(size)
+    @view.print_ship_position_options(size)
     valido = false
     pos = 0
-    while not valido
+    until valido
       pos = $stdin.gets.to_i
       x = (pos % @model.rows)
-      if x == 0
-         x = @model.rows
-      end 
-      y = ((((pos -1) / @model.rows).floor())+1).to_i    
-      if pos < 1 or x > @model.rows or y > @model.rows  
-        @view.printErrorShipPosition(0)
-        @view.printShipPositionOptions(size)
-      else 
-        valido = true 
+      x = @model.rows if x.zero?
+      y = (((pos - 1) / @model.rows).floor + 1).to_i
+      if (pos < 1) || (x > @model.rows) || (y > @model.rows)
+        @view.print_error_ship_position(0)
+        @view.print_ship_position_options(size)
+      else
+        valido = true
       end
     end
-    @view.printShipDimensionOptions
-    notInOptions = true
+    @view.print_ship_dimension_options
+    not_in_options = true
     dim = 0
-    while notInOptions
+    while not_in_options
       dim = $stdin.gets.to_i
-      notInOptions = dim != 1 && dim != 2
-      if notInOptions
-        @view.printShipDimensionOptions
-      end
+      not_in_options = dim != 1 && dim != 2
+      @view.print_ship_dimension_options if not_in_options
     end
-    handleShipPosition(size, pos, dim)
+    handle_ship_position(size, pos, dim)
   end
 
-  def handleShipPosition(size, pos, dim)
-    if @player == 1
-      matrix = @model.firstMatrixJ1
-    else 
-      matrix = @model.firstMatrixJ2
-    end
+  def handle_ship_position(size, pos, dim)
+    matrix = if @player == 1
+               @model.first_matrix_j1
+             else
+               @model.first_matrix_j2
+             end
     x = (pos % @model.rows)
-      if x == 0
-         x = @model.rows
-      end 
-    y = ((((pos -1) / @model.rows).floor())+1).to_i
+    x = @model.rows if x.zero?
+    y = (((pos - 1) / @model.rows).floor + 1).to_i
     if dim == 1
       x_fin = x + size - 1
-      if x_fin > @model.rows  
-        @view.printErrorShipPosition(1)
-        requestShipPositionInput(size)
+      if x_fin > @model.rows
+        @view.print_error_ship_position(1)
+        request_ship_position_input(size)
         return
       end
-      for posicion in x..x_fin do
-        if matrix[y][posicion] == " i " or matrix[y][posicion] == " m " or matrix[y][posicion] == " f "  
-          @view.printErrorShipPosition(2)
-          requestShipPositionInput(size)
-          return
-        end
+      (x..x_fin).each do |posicion|
+        next unless (matrix[y][posicion] == ' i ') || (matrix[y][posicion] == ' m ') || (matrix[y][posicion] == ' f ')
+
+        @view.print_error_ship_position(2)
+        request_ship_position_input(size)
       end
-      for posicion in x..x_fin do
-        if posicion == x
-          addShipToBoard(y, posicion, " i ")
-        elsif posicion == x_fin
-          addShipToBoard(y, posicion, " f ")
-        else
-          addShipToBoard(y, posicion, " m ")
-        end 
-      end  
-      @view.printPlayerBoard(@model, @player)  
+      @model.place_horizontal_ship(x, y, x_fin, @player)
     else
-      y_fin = y + size -1
-      if y_fin > @model.rows  
-        @view.printErrorShipPosition(1)
-        requestShipPositionInput(size)
-        return
+      y_fin = y + size - 1
+      if y_fin > @model.rows
+        @view.print_error_ship_position(1)
+        request_ship_position_input(size)
       end
-      for posicion in y..y_fin do
-        if matrix[posicion][x] == " i " or matrix[posicion][x] == " m " or matrix[posicion][x] == " f "  
-          @view.printErrorShipPosition(2)
-          requestShipPositionInput(size)
-          return
-        end
+      (y..y_fin).each do |posicion|
+        next unless (matrix[posicion][x] == ' i ') || (matrix[posicion][x] == ' m ') || (matrix[posicion][x] == ' f ')
+
+        @view.print_error_ship_position(2)
+        request_ship_position_input(size)
       end
-      for posicion in y..y_fin do
-        if posicion == y
-          addShipToBoard(posicion, x, " i ")
-        elsif posicion == y_fin
-          addShipToBoard(posicion, x, " f ")
-        else
-          addShipToBoard(posicion, x, " m ")
-        end 
-      end
-      @view.printPlayerBoard(@model, @player)
-    end    
+      @model.place_vertical_ship(x, y, y_fin, @player)
+    end
+    @view.print_player_board(@model, @player)
   end
-
-  def addShipToBoard(x,y,pos)
-    @model.mark(x,y,pos,@player,1)
-  end
-
-
-
-
-
-  # def printBoard
-  #   # HACER: ver si es necesario el metodo view.clean 
-  #   # @view.clean
-  #   @view.printBoard(@model)
-  # end
-  
-  # def requestInput
-  #   @view.printOptions(@playerSymbol)
-  #   key = $stdin.gets.to_i
-  #   puts key
-  #   x = (key/3.0).ceil
-  #   y = (key%3).to_i
-  #   if y == 0
-  #     y = 3
-  #   end
-  #   select(x,y)
-  # end
-
-  # def select(xo,yo)
-  #   @model.mark(xo,yo,@playerSymbol)
-  #   if @model.winner(@playerSymbol)
-  #     @view.congratulate(@playerSymbol)
-  #   else
-  #     swapPlayer
-  #     if @model.isFull
-  #       @view.gameOver
-  #     else
-  #       requestInput
-  #     end
-  #   end
-  #   @view.clean
-  # end
-  
-
-  # # hacer: no es necesario, o cambiar a señalar el turno
-  # def swapPlayer
-  #   if @playerSymbol == 'O'
-  #     @playerSymbol = 'X'
-  #   else
-  #     @playerSymbol = 'O'
-  #   end
-  # end
 end

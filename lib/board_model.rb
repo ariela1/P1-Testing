@@ -1,153 +1,124 @@
 # frozen_string_literal: true
+
 require_relative './observer/observable'
 
+# Modelo del tablero
 class Board < Observable
+  attr_accessor :mode, :first_matrix_j1, :second_matrix_j1, :first_matrix_j2, :second_matrix_j2, :difficulty
 
-  attr_accessor :mode
-  attr_accessor :firstMatrixJ1
-  attr_accessor :secondMatrixJ1
-  attr_accessor :firstMatrixJ2
-  attr_accessor :secondMatrixJ2
-  attr_accessor :difficulty
+  def initialize
+    super()
+    @first_matrix_j1 = []
+    @second_matrix_j1 = []
+    @first_matrix_j2 = []
+    @second_matrix_j2 = []
+    @mode = 0
+    @difficulty = 0
+  end
 
-  def initialize()
-      super()
-      @firstMatrixJ1 = []
-      @secondMatrixJ1 = []
-      @firstMatrixJ2 = []
-      @secondMatrixJ2 = []
-      @mode = 0
-      @difficulty = 0
+  def set_difficulty_easy
+    easy_board =
+      [['*', '*', '*', '*', '*', '*', '*', '*', '*', '*', '*', '*'],
+       ['*', '_', '_', '_', '_', '_', '_', '_', '_', '_', '_', '*'],
+       ['*', '_', '_', '_', '_', '_', '_', '_', '_', '_', '_', '*'],
+       ['*', '_', '_', '_', '_', '_', '_', '_', '_', '_', '_', '*'],
+       ['*', '_', '_', '_', '_', '_', '_', '_', '_', '_', '_', '*'],
+       ['*', '_', '_', '_', '_', '_', '_', '_', '_', '_', '_', '*'],
+       ['*', '_', '_', '_', '_', '_', '_', '_', '_', '_', '_', '*'],
+       ['*', '_', '_', '_', '_', '_', '_', '_', '_', '_', '_', '*'],
+       ['*', '_', '_', '_', '_', '_', '_', '_', '_', '_', '_', '*'],
+       ['*', '_', '_', '_', '_', '_', '_', '_', '_', '_', '_', '*'],
+       ['*', '_', '_', '_', '_', '_', '_', '_', '_', '_', '_', '*'],
+       ['*', '*', '*', '*', '*', '*', '*', '*', '*', '*', '*', '*']]
+    @first_matrix_j1 = easy_board.map(&:clone)
+    @second_matrix_j1 = easy_board.map(&:clone)
+    @first_matrix_j2 = easy_board.map(&:clone)
+    @second_matrix_j2 = easy_board.map(&:clone)
+  end
+
+  def set_difficulty_hard
+    hard_board =
+      [['*', '*', '*', '*', '*', '*', '*', '*', '*', '*', '*', '*', '*', '*', '*', '*', '*'],
+       ['*', '_', '_', '_', '_', '_', '_', '_', '_', '_', '_', '_', '_', '_', '_', '_', '*'],
+       ['*', '_', '_', '_', '_', '_', '_', '_', '_', '_', '_', '_', '_', '_', '_', '_', '*'],
+       ['*', '_', '_', '_', '_', '_', '_', '_', '_', '_', '_', '_', '_', '_', '_', '_', '*'],
+       ['*', '_', '_', '_', '_', '_', '_', '_', '_', '_', '_', '_', '_', '_', '_', '_', '*'],
+       ['*', '_', '_', '_', '_', '_', '_', '_', '_', '_', '_', '_', '_', '_', '_', '_', '*'],
+       ['*', '_', '_', '_', '_', '_', '_', '_', '_', '_', '_', '_', '_', '_', '_', '_', '*'],
+       ['*', '_', '_', '_', '_', '_', '_', '_', '_', '_', '_', '_', '_', '_', '_', '_', '*'],
+       ['*', '_', '_', '_', '_', '_', '_', '_', '_', '_', '_', '_', '_', '_', '_', '_', '*'],
+       ['*', '_', '_', '_', '_', '_', '_', '_', '_', '_', '_', '_', '_', '_', '_', '_', '*'],
+       ['*', '_', '_', '_', '_', '_', '_', '_', '_', '_', '_', '_', '_', '_', '_', '_', '*'],
+       ['*', '_', '_', '_', '_', '_', '_', '_', '_', '_', '_', '_', '_', '_', '_', '_', '*'],
+       ['*', '_', '_', '_', '_', '_', '_', '_', '_', '_', '_', '_', '_', '_', '_', '_', '*'],
+       ['*', '_', '_', '_', '_', '_', '_', '_', '_', '_', '_', '_', '_', '_', '_', '_', '*'],
+       ['*', '_', '_', '_', '_', '_', '_', '_', '_', '_', '_', '_', '_', '_', '_', '_', '*'],
+       ['*', '_', '_', '_', '_', '_', '_', '_', '_', '_', '_', '_', '_', '_', '_', '_', '*'],
+       ['*', '*', '*', '*', '*', '*', '*', '*', '*', '*', '*', '*', '*', '*', '*', '*', '*']]
+    @first_matrix_j1 = hard_board.map(&:clone)
+    @second_matrix_j1 = hard_board.map(&:clone)
+    @first_matrix_j2 = hard_board.map(&:clone)
+    @second_matrix_j2 = hard_board.map(&:clone)
+  end
+
+  def rows
+    if @difficulty == 1
+      10
+    else
+      15
     end
+  end
 
-
-    def setDifficultyEasy
-      easyBoard = 
-       [['*','*','*','*','*','*','*','*','*','*','*','*'],
-        ['*','_','_','_','_','_','_','_','_','_','_','*'],
-        ['*','_','_','_','_','_','_','_','_','_','_','*'],
-        ['*','_','_','_','_','_','_','_','_','_','_','*'],
-        ['*','_','_','_','_','_','_','_','_','_','_','*'],
-        ['*','_','_','_','_','_','_','_','_','_','_','*'],
-        ['*','_','_','_','_','_','_','_','_','_','_','*'],
-        ['*','_','_','_','_','_','_','_','_','_','_','*'],
-        ['*','_','_','_','_','_','_','_','_','_','_','*'],
-        ['*','_','_','_','_','_','_','_','_','_','_','*'],
-        ['*','_','_','_','_','_','_','_','_','_','_','*'],
-        ['*','*','*','*','*','*','*','*','*','*','*','*']]
-      @firstMatrixJ1 = easyBoard.map(&:clone)
-      @secondMatrixJ1 = easyBoard.map(&:clone)
-      @firstMatrixJ2 = easyBoard.map(&:clone)
-      @secondMatrixJ2 = easyBoard.map(&:clone)
-    end
-
-    def setDifficultyHard
-      hardBoard = 
-        [['*','*','*','*','*','*','*','*','*','*','*','*','*','*','*','*','*'],
-        ['*','_','_','_','_','_','_','_','_','_','_','_','_','_','_','_','*'],
-        ['*','_','_','_','_','_','_','_','_','_','_','_','_','_','_','_','*'],
-        ['*','_','_','_','_','_','_','_','_','_','_','_','_','_','_','_','*'],
-        ['*','_','_','_','_','_','_','_','_','_','_','_','_','_','_','_','*'],
-        ['*','_','_','_','_','_','_','_','_','_','_','_','_','_','_','_','*'],
-        ['*','_','_','_','_','_','_','_','_','_','_','_','_','_','_','_','*'],
-        ['*','_','_','_','_','_','_','_','_','_','_','_','_','_','_','_','*'],
-        ['*','_','_','_','_','_','_','_','_','_','_','_','_','_','_','_','*'],
-        ['*','_','_','_','_','_','_','_','_','_','_','_','_','_','_','_','*'],
-        ['*','_','_','_','_','_','_','_','_','_','_','_','_','_','_','_','*'],
-        ['*','_','_','_','_','_','_','_','_','_','_','_','_','_','_','_','*'],
-        ['*','_','_','_','_','_','_','_','_','_','_','_','_','_','_','_','*'],
-        ['*','_','_','_','_','_','_','_','_','_','_','_','_','_','_','_','*'],
-        ['*','_','_','_','_','_','_','_','_','_','_','_','_','_','_','_','*'],
-        ['*','_','_','_','_','_','_','_','_','_','_','_','_','_','_','_','*'],
-        ['*','*','*','*','*','*','*','*','*','*','*','*','*','*','*','*','*']]
-      @firstMatrixJ1 = hardBoard.map(&:clone)
-      @secondMatrixJ1 = hardBoard.map(&:clone)
-      @firstMatrixJ2 = hardBoard.map(&:clone)
-      @secondMatrixJ2 = hardBoard.map(&:clone)
-    end
-
-    def rows
-      rowNumber = 0
-      if @difficulty == 1
-        rowNumber = 10
+  def place_vertical_ship(xpos, ypos, y_fin, player)
+    (ypos..y_fin).each do |posicion|
+      if posicion == ypos
+        mark(posicion, xpos, ' i ', player, 1)
+      elsif posicion == y_fin
+        mark(posicion, xpos, ' f ', player, 1)
       else
-        rowNumber = 15
+        mark(posicion, xpos, ' m ', player, 1)
       end
-      rowNumber
     end
+  end
 
-    def mark(xo, yo, symbol, player, type)
+  def place_horizontal_ship(xpos, ypos, x_fin, player)
+    (xpos..x_fin).each do |posicion|
+      if posicion == xpos
+        mark(ypos, posicion, ' i ', player, 1)
+      elsif posicion == x_fin
+        mark(ypos, posicion, ' f ', player, 1)
+      else
+        mark(ypos, posicion, ' m ', player, 1)
+      end
+    end
+  end
+
+  def mark(xo_pos, yo_pos, symbol, player, type)
     # marcar simbolo en la coordenada especificada
-      if player == 1
-        if type == 1
-          @firstMatrixJ1[xo][yo] = symbol
-        else
-          @secondMatrixJ1[xo][yo] = symbol
-        end
+    if player == 1
+      if type == 1
+        @first_matrix_j1[xo_pos][yo_pos] = symbol
       else
-        if type == 1
-          @firstMatrixJ2[xo][yo] = symbol
-        else
-          @secondMatrixJ2[xo][yo] = symbol
-        end
-      end 
+        @second_matrix_j1[xo_pos][yo_pos] = symbol
+      end
+    elsif type == 1
+      @first_matrix_j2[xo_pos][yo_pos] = symbol
+    else
+      @second_matrix_j2[xo_pos][yo_pos] = symbol
     end
+  end
 
-    def symbolAt(xo,yo, player, type)
-      if player == 1
-        if type == 1
-          return @firstMatrixJ1[xo][yo]
-        else
-          return @secondMatrixJ1[xo][yo]
-        end
+  def symbol_at(xo_pos, yo_pos, player, type)
+    if player == 1
+      if type == 1
+        @first_matrix_j1[xo_pos][yo_pos]
       else
-        if type == 1
-          return @firstMatrixJ2[xo][yo]
-        else
-          return @secondMatrixJ2[xo][yo]
-        end
-      end 
+        @second_matrix_j1[xo_pos][yo_pos]
+      end
+    elsif type == 1
+      @first_matrix_j2[xo_pos][yo_pos]
+    else
+      @second_matrix_j2[xo_pos][yo_pos]
     end
-
-    # def winner(symbol)
-    #   for i in 1..3
-    #     for j in 1..3
-    #       if (@matrix[i][j] == symbol && sameNeighbors(i,j,symbol))
-    #           return true
-    #       end
-    #     end
-    #   end
-    #   return false
-    # end
-
-    # def sameNeighbors(xo, yo, symbol)
-    #   return (@matrix[xo][yo - 1] == symbol && @matrix[xo][yo + 1] == symbol) ||  (@matrix[xo - 1][yo] == symbol && @matrix[xo + 1][yo] == symbol) || (@matrix[xo - 1][yo - 1] == symbol && @matrix[xo + 1][yo + 1] == symbol) || (@matrix[xo + 1][yo - 1] == symbol && @matrix[xo - 1][yo + 1] == symbol)
-    # end
-
-    # def getMark(x,y)
-    #   return @matrix[x][y]
-    # end
-
-    # def isFull
-    #   counter = 0
-    #   for i in 1..3
-    #     for j in 1..3
-    #       if (@matrix[i][j] == '_')
-    #           counter += 1
-    #       end
-    #     end
-    #   end
-    #   return counter == 0
-    # end
-
-    # def equal(otherBoard)
-    #   for i in 1..3
-    #     for j in 1..3
-    #       if @matrix[i][j] != otherBoard.getMark(i,j)
-    #           return false
-    #       end
-    #     end
-    #   end
-    #   return true
-    # end
+  end
 end
