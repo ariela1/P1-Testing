@@ -115,4 +115,5 @@ class BoardTest < Test::Unit::TestCase
   def test_superposing_ships
     # @controller.handleShipPosition(5, 1, 1)
     # @controller.handleShipPosition(2, 3, 1)
+  end
 end
