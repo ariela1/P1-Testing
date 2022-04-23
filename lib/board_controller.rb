@@ -5,6 +5,7 @@ class BoardController
   def initialize(boardModel, boardView)
     @model = boardModel
     @view = boardView
+    @player = 0
   end
 
   def requestGameModeInput
@@ -30,7 +31,7 @@ class BoardController
       notInOptions = key != 1 && key != 2
       if notInOptions
         @view.printGameDifficultyOptions(false)
-      end
+      end 
     end
     handleDifficulty(key)
   end
@@ -44,28 +45,39 @@ class BoardController
     @model.difficulty = diff
     if diff == 1
       @model.setDifficultyEasy
-      printPlayerAndOpponentBoards
-      shipPosition(diff)
-      #requestShipPositionInput
     else
       @model.setDifficultyHard
-      printPlayerAndOpponentBoards
-      shipPosition(diff)
-      #requestShipPositionInput
     end
   end
 
   def printPlayerAndOpponentBoards
     # HACER: ver si es necesario el metodo view.clean 
     # @view.clean
-    @view.printPlayerBoard(@model)
-    @view.printOpponentBoard(@model)
+    @view.printPlayerBoard(@model, @player)
+    @view.printOpponentBoard(@model, @player)
   end
 
+  def choiceShips
+    if @model.mode == 1
+      @player = 1
+      @view.printPlayersTurns(1)
+      @view.printPlayerBoard(@model, @player)
+      shipPosition
+      #### TODO IMPLEMENTAR IA - AGREGAR BARCOS
+    else
+      @player = 1
+      @view.printPlayersTurns(1)
+      @view.printPlayerBoard(@model, @player)
+      shipPosition
+      @player = 2
+      @view.printPlayersTurns(2)
+      @view.printPlayerBoard(@model, @player)
+      shipPosition
+    end
+  end 
 
-## Inicio de la creacion de los barcos
-  def shipPosition(diff)
-    if diff == 1
+  def shipPosition
+    if @model.difficulty == 1
       array = [5,4,3,3,2]
     else
       array = [5,5,4,4,3,3,2,2]
@@ -77,23 +89,20 @@ class BoardController
 
   def requestShipPositionInput(size)
     @view.printShipPositionOptions(size)
-    notInOptions = true
+    valido = false
     pos = 0
-    while notInOptions
+    while not valido
       pos = $stdin.gets.to_i
-      notInOptions = pos < 1
       x = (pos % @model.rows)
       if x == 0
          x = @model.rows
       end 
-      y = ((((pos -1) / @model.rows).floor())+1).to_i
-      # puts "X: #{x}"
-      # puts "Y: #{y}"
-    
-
-      if notInOptions or x > @model.rows or y > @model.rows  
+      y = ((((pos -1) / @model.rows).floor())+1).to_i    
+      if pos < 1 or x > @model.rows or y > @model.rows  
         @view.printErrorShipPosition(0)
         @view.printShipPositionOptions(size)
+      else 
+        valido = true 
       end
     end
     @view.printShipDimensionOptions
@@ -109,31 +118,31 @@ class BoardController
     handleShipPosition(size, pos, dim)
   end
 
-  def handleShipPosition(size, pos, dim)    
-    # FALTAA ver que no haya otro barco    
+  def handleShipPosition(size, pos, dim)
+    if @player == 1
+      matrix = @model.firstMatrixJ1
+    else 
+      matrix = @model.firstMatrixJ2
+    end
     x = (pos % @model.rows)
       if x == 0
          x = @model.rows
       end 
     y = ((((pos -1) / @model.rows).floor())+1).to_i
-    
-        
     if dim == 1
       x_fin = x + size - 1
-      # puts "X: #{x_fin}"
       if x_fin > @model.rows  
         @view.printErrorShipPosition(1)
         requestShipPositionInput(size)
+        return
       end
-      
       for posicion in x..x_fin do
-        if @model.firstMatrix[y][posicion] == " i " or @model.firstMatrix[y][posicion] == " m " or @model.firstMatrix[y][posicion] == " f "  
+        if matrix[y][posicion] == " i " or matrix[y][posicion] == " m " or matrix[y][posicion] == " f "  
           @view.printErrorShipPosition(2)
           requestShipPositionInput(size)
+          return
         end
       end
-
-
       for posicion in x..x_fin do
         if posicion == x
           addShipToBoard(y, posicion, " i ")
@@ -142,24 +151,22 @@ class BoardController
         else
           addShipToBoard(y, posicion, " m ")
         end 
-      end
-  
-      printPlayerAndOpponentBoards
-      
+      end  
+      @view.printPlayerBoard(@model, @player)  
     else
       y_fin = y + size -1
       if y_fin > @model.rows  
         @view.printErrorShipPosition(1)
         requestShipPositionInput(size)
+        return
       end
-
       for posicion in y..y_fin do
-        if @model.firstMatrix[posicion][y] == " i " or @model.firstMatrix[posicion][y] == " m " or @model.firstMatrix[posicion][y] == " f "  
+        if matrix[posicion][x] == " i " or matrix[posicion][x] == " m " or matrix[posicion][x] == " f "  
           @view.printErrorShipPosition(2)
           requestShipPositionInput(size)
+          return
         end
       end
-
       for posicion in y..y_fin do
         if posicion == y
           addShipToBoard(posicion, x, " i ")
@@ -169,16 +176,15 @@ class BoardController
           addShipToBoard(posicion, x, " m ")
         end 
       end
-
-      printPlayerAndOpponentBoards
-    
+      @view.printPlayerBoard(@model, @player)
     end    
   end
 
   def addShipToBoard(x,y,pos)
-    @model.mark(x,y,pos,1)
-    # printPlayerAndOpponentBoards
+    @model.mark(x,y,pos,@player,1)
   end
+
+
 
 
 

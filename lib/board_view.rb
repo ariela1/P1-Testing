@@ -28,23 +28,27 @@ class BoardView < Observer
     end
   end
 
-  def printPlayerBoard(boardModel)
+  def printPlayersTurns(player)
+    puts "\nTurno del jugardor #{player}"
+  end 
+
+  def printPlayerBoard(boardModel, player)
     puts "\nTABLERO DEL JUGADOR"
-    printBoard(boardModel)
+    printBoard(boardModel, player, 1)
   end
 
-  def printOpponentBoard(boardModel)
+  def printOpponentBoard(boardModel, player)
     puts "\nTABLERO DEL OPONENTE"
-    printBoard(boardModel)
+    printBoard(boardModel, player, 2)
   end
   
   # La lógica cambia segun se imprime para el jugador o el oponente
-  def printBoard(boardModel)
+  def printBoard(boardModel, player, type)
     pos = 1
     for i in 1..boardModel.rows
       print "|"
       for j in 1..boardModel.rows
-        symbol = boardModel.symbolAt(i,j)
+        symbol = boardModel.symbolAt(i,j, player, type)
         if symbol == '_'
           if pos <= 9
             print " #{pos} |"
