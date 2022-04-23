@@ -11,3 +11,4 @@ controller = BoardController.new(model,view)
 # controller.printBoard
 controller.requestGameModeInput
 # controller.requestInput
+controller.choiceShips

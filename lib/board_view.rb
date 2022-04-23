@@ -28,23 +28,27 @@ class BoardView < Observer
     end
   end
 
-  def printPlayerBoard(boardModel)
+  def printPlayersTurns(player)
+    puts "\nTurno del jugardor #{player}"
+  end 
+
+  def printPlayerBoard(boardModel, player)
     puts "\nTABLERO DEL JUGADOR"
-    printBoard(boardModel)
+    printBoard(boardModel, player, 1)
   end
 
-  def printOpponentBoard(boardModel)
+  def printOpponentBoard(boardModel, player)
     puts "\nTABLERO DEL OPONENTE"
-    printBoard(boardModel)
+    printBoard(boardModel, player, 2)
   end
   
   # La lógica cambia segun se imprime para el jugador o el oponente
-  def printBoard(boardModel)
+  def printBoard(boardModel, player, type)
     pos = 1
     for i in 1..boardModel.rows
       print "|"
       for j in 1..boardModel.rows
-        symbol = "_"
+        symbol = boardModel.symbolAt(i,j, player, type)
         if symbol == '_'
           if pos <= 9
             print " #{pos} |"
@@ -63,8 +67,28 @@ class BoardView < Observer
     STDOUT.flush
   end
 
+  def printShipPositionOptions(size)
+    puts "\nSelecciona posicion para agregar barco de tamaño #{size}"
+  end
 
-  
+  def printShipDimensionOptions
+    print "\nSelecciona sentido del barco:\n"
+    print "[1] Horizontal\n"
+    print "[2] Vertical\n"
+  end
+
+  def printErrorShipPosition(code)
+    if code == 0
+      puts "\nCelda no se encuentra en el tablero"
+    elsif code == 1
+      puts "\nBarco no cabe en el tablero"
+    elsif code == 2
+      puts "\nCelda o celdas ocupadas por otro barco"
+
+    end
+  end
+
+
   # def printBoard(boardModel)
   #   pos = 1
   #   for i in 1..3
@@ -84,10 +108,9 @@ class BoardView < Observer
   # end
 
   # def update(boardModel)
-  #   # clean
-  #   printBoard(boardModel)
+    # clean
+    # printBoard(boardModel)
   # end
-  
 
   # def congratulate(playerSymbol)
   #   clean

@@ -2,21 +2,28 @@
 require_relative './observer/observable'
 
 class Board < Observable
-    def initialize()
+
+  attr_accessor :mode
+  attr_accessor :firstMatrixJ1
+  attr_accessor :secondMatrixJ1
+  attr_accessor :firstMatrixJ2
+  attr_accessor :secondMatrixJ2
+  attr_accessor :difficulty
+
+  def initialize()
       super()
-      @firstMatrix = []
-      @secondMatrix = []
+      @firstMatrixJ1 = []
+      @secondMatrixJ1 = []
+      @firstMatrixJ2 = []
+      @secondMatrixJ2 = []
       @mode = 0
       @difficulty = 0
     end
 
-    attr_accessor :mode
-    attr_accessor :matrix
-    attr_accessor :difficulty
-    
+
     def setDifficultyEasy
       easyBoard = 
-        [['*','*','*','*','*','*','*','*','*','*','*','*'],
+       [['*','*','*','*','*','*','*','*','*','*','*','*'],
         ['*','_','_','_','_','_','_','_','_','_','_','*'],
         ['*','_','_','_','_','_','_','_','_','_','_','*'],
         ['*','_','_','_','_','_','_','_','_','_','_','*'],
@@ -28,8 +35,10 @@ class Board < Observable
         ['*','_','_','_','_','_','_','_','_','_','_','*'],
         ['*','_','_','_','_','_','_','_','_','_','_','*'],
         ['*','*','*','*','*','*','*','*','*','*','*','*']]
-      @firstMatrix = easyBoard.map(&:clone)
-      @secondMatrix = easyBoard.map(&:clone)
+      @firstMatrixJ1 = easyBoard.map(&:clone)
+      @secondMatrixJ1 = easyBoard.map(&:clone)
+      @firstMatrixJ2 = easyBoard.map(&:clone)
+      @secondMatrixJ2 = easyBoard.map(&:clone)
     end
 
     def setDifficultyHard
@@ -51,8 +60,10 @@ class Board < Observable
         ['*','_','_','_','_','_','_','_','_','_','_','_','_','_','_','_','*'],
         ['*','_','_','_','_','_','_','_','_','_','_','_','_','_','_','_','*'],
         ['*','*','*','*','*','*','*','*','*','*','*','*','*','*','*','*','*']]
-      @firstMatrix = hardBoard.map(&:clone)
-      @secondMatrix = hardBoard.map(&:clone)
+      @firstMatrixJ1 = hardBoard.map(&:clone)
+      @secondMatrixJ1 = hardBoard.map(&:clone)
+      @firstMatrixJ2 = hardBoard.map(&:clone)
+      @secondMatrixJ2 = hardBoard.map(&:clone)
     end
 
     def rows
@@ -65,16 +76,38 @@ class Board < Observable
       rowNumber
     end
 
-    # def mark(xo, yo, symbol)
-    # # marcar simbolo en la coordenada especificada
-    #   @matrix[xo][yo] = symbol
-    #   notifyAll() # ??? como funciona
-    # end
+    def mark(xo, yo, symbol, player, type)
+    # marcar simbolo en la coordenada especificada
+      if player == 1
+        if type == 1
+          @firstMatrixJ1[xo][yo] = symbol
+        else
+          @secondMatrixJ1[xo][yo] = symbol
+        end
+      else
+        if type == 1
+          @firstMatrixJ2[xo][yo] = symbol
+        else
+          @secondMatrixJ2[xo][yo] = symbol
+        end
+      end 
+    end
 
-    # def symbolAt(xo,yo)
-    # # imprime simbolo de la coordenada especificada
-    #   @matrix[xo][yo]
-    # end
+    def symbolAt(xo,yo, player, type)
+      if player == 1
+        if type == 1
+          return @firstMatrixJ1[xo][yo]
+        else
+          return @secondMatrixJ1[xo][yo]
+        end
+      else
+        if type == 1
+          return @firstMatrixJ2[xo][yo]
+        else
+          return @secondMatrixJ2[xo][yo]
+        end
+      end 
+    end
 
     # def winner(symbol)
     #   for i in 1..3
