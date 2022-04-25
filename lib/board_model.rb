@@ -93,6 +93,14 @@ class Board < Observable
     end
   end
 
+  def mark_second_matrix(x, y, symbol, player)
+    if player == 1
+      @second_matrix_j1[y][x] = symbol
+    else
+      @second_matrix_j2[y][x] = symbol
+    end
+  end
+
   def mark(xo_pos, yo_pos, symbol, player, type)
     # marcar simbolo en la coordenada especificada
     if player == 1

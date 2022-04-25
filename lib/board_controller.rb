@@ -151,8 +151,11 @@ class BoardController
     a = 1
     while a == 1
       attack = choose_atack
-      puts ' '
-      puts 'PLAYER ' + @player.to_s + ' ATTACKED POSITION ' + attack.to_s
+      @view.puts_one(@player, attack)
+      coord = convert_position(attack.to_i, @model.rows.to_i)
+      puts coord[0]
+      puts coord [1]
+      @model.mark_second_matrix(coord[0], coord[1], ' X ', @player)
       print_boards
       finish_turn
       change_turn
@@ -168,25 +171,32 @@ class BoardController
   end
 
   def start_shooting
-    puts ' '
-    puts 'START GAME'
+    @view.puts_two
     @player = 1
   end
 
   def choose_atack
-    puts ' '
-    puts 'PLAYS: PLAYER ' + @player.to_s
+    @view.puts_tres(@player)
     print_boards
-    puts ' '
-    puts 'ENTER POSITION ATTACK:'
+    @view.puts_four
     attack = gets.chomp
     attack
   end
 
   def finish_turn
-    puts ' '
-    puts 'PRESS ENTER TO FINISH YOUR TURN:'
+    @view.puts_five
     attack = gets.chomp
     attack
+  end
+
+  def convert_position(atack, difficulty)
+    if (atack % difficulty).zero?
+      ex = difficulty
+      ye = atack.div(difficulty)
+    else
+      ye = atack.div(difficulty) + 1
+      ex = (atack % difficulty)
+    end
+    [ex, ye]
   end
 end

@@ -39,6 +39,31 @@ class BoardView < Observer
     print_board(board_model, player, 2)
   end
 
+  def puts_one(player, attack)
+    puts ' '
+    puts 'PLAYER ' + player.to_s + ' ATTACKED POSITION ' + attack.to_s
+  end
+
+  def puts_two
+    puts ' '
+    puts 'START GAME'
+  end
+
+  def puts_tres(player)
+    puts ' '
+    puts 'PLAYS: PLAYER ' + player.to_s
+  end
+
+  def puts_four
+    puts ' '
+    puts 'ENTER POSITION ATTACK:'
+  end
+
+  def puts_five
+    puts ' '
+    puts 'PRESS ENTER TO FINISH YOUR TURN:'
+  end
+
   # La lógica cambia segun se imprime para el jugador o el oponente
   def print_board(board_model, player, type)
     pos = 1
