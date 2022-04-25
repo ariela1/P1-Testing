@@ -124,28 +124,35 @@ class Board < Observable
 
   def add_attack_on_boards(player, x, y)
     if player == 1
-      @second_matrix_j1[x][y] = " x "
       if @first_matrix_j2[x][y] == " i "
+        @second_matrix_j1[x][y] = " x "
         @first_matrix_j2[x][y] = " I "
       elsif @first_matrix_j2[x][y] == " m "
         @first_matrix_j2[x][y] = " M "
+        @second_matrix_j1[x][y] = " x "
       elsif @first_matrix_j2[x][y] == " f "
         @first_matrix_j2[x][y] = " F "
+        @second_matrix_j1[x][y] = " x "
       else
         @first_matrix_j2[x][y] = " - "
+        @second_matrix_j1[x][y] = " - "
+      
       end
 
     else
-      @second_matrix_j2[x][y] = " x "  
-
       if @first_matrix_j1[x][y] == " i "
+        @second_matrix_j2[x][y] = " x " 
         @first_matrix_j1[x][y] = " I "
       elsif @first_matrix_j1[x][y] == " m "
+        @second_matrix_j2[x][y] = " x "  
         @first_matrix_j1[x][y] = " M "
       elsif @first_matrix_j1[x][y] == " f "
+        @second_matrix_j2[x][y] = " x "  
         @first_matrix_j1[x][y] = " F "
       else
         @first_matrix_j1[x][y] = " - "
+        @second_matrix_j2[x][y] = " - "  
+
       end
 
 
