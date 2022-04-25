@@ -74,7 +74,7 @@ class BoardView < Observer
     print "[2] Vertical\n"
   end
 
-  def print_error_ship_position(code)
+  def print_error(code)
     case code
     when 0
       puts "\nCelda no se encuentra en el tablero"
@@ -82,7 +82,16 @@ class BoardView < Observer
       puts "\nBarco no cabe en el tablero"
     when 2
       puts "\nCelda o celdas ocupadas por otro barco"
-
     end
   end
+
+  def start_shooting
+    puts "\n¡Empieza el juego!"
+  end
+
+  def choose_atack
+    puts "\nIntroduce en que celda quieres atacar:"
+  end
+
+
 end

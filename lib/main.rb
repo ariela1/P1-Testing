@@ -12,4 +12,4 @@ controller = BoardController.new(model, view)
 controller.request_gamemode_input
 # controller.requestInput
 controller.choice_ships
-controller.shooter
+controller.begin_game
