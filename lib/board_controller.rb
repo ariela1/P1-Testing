@@ -145,4 +145,48 @@ class BoardController
     end
     @view.print_player_board(@model, @player)
   end
+
+  def shooter
+    start_shooting
+    a = 1
+    while a == 1
+      attack = choose_atack
+      puts ' '
+      puts 'PLAYER ' + @player.to_s + ' ATTACKED POSITION ' + attack.to_s
+      print_boards
+      finish_turn
+      change_turn
+    end
+  end
+
+  def change_turn
+    @player = if @player == 1
+                2
+              else
+                1
+              end
+  end
+
+  def start_shooting
+    puts ' '
+    puts 'START GAME'
+    @player = 1
+  end
+
+  def choose_atack
+    puts ' '
+    puts 'PLAYS: PLAYER ' + @player.to_s
+    print_boards
+    puts ' '
+    puts 'ENTER POSITION ATTACK:'
+    attack = gets.chomp
+    attack
+  end
+
+  def finish_turn
+    puts ' '
+    puts 'PRESS ENTER TO FINISH YOUR TURN:'
+    attack = gets.chomp
+    attack
+  end
 end
