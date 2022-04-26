@@ -101,3 +101,4 @@ class BoardView < Observer
     puts "\n\nJugador #{player} gana"
   end 
 end 
+
