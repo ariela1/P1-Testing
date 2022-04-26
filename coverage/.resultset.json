@@ -1,7 +1,7 @@
 {
   "Unit Tests": {
     "coverage": {
-      "D:/U/Testing/P1-Testing/lib/board_model.rb": {
+      "/home/ariela/Descargas/Testing/P1-Testing/lib/board_model.rb": {
         "lines": [
           null,
           null,
@@ -131,14 +131,8 @@
           null,
           15,
           12,
-          12,
-          null,
-          0,
           null,
           3,
-          3,
-          null,
-          0,
           null,
           null,
           null,
@@ -207,6 +201,6 @@
         ]
       }
     },
-    "timestamp": 1650982555
+    "timestamp": 1650985896
   }
 }

@@ -101,11 +101,11 @@ class Board
   def place_vertical_ship(xpos, ypos, y_fin, player)
     (ypos..y_fin).each do |posicion|
       if posicion == ypos
-        mark(posicion, xpos, ' i ', player, 1)
+        mark(posicion, xpos, ' i ', player)
       elsif posicion == y_fin
-        mark(posicion, xpos, ' f ', player, 1)
+        mark(posicion, xpos, ' f ', player)
       else
-        mark(posicion, xpos, ' m ', player, 1)
+        mark(posicion, xpos, ' m ', player)
       end
     end
   end
@@ -113,27 +113,21 @@ class Board
   def place_horizontal_ship(xpos, ypos, x_fin, player)
     (xpos..x_fin).each do |posicion|
       if posicion == xpos
-        mark(ypos, posicion, ' i ', player, 1)
+        mark(ypos, posicion, ' i ', player)
       elsif posicion == x_fin
-        mark(ypos, posicion, ' f ', player, 1)
+        mark(ypos, posicion, ' f ', player)
       else
-        mark(ypos, posicion, ' m ', player, 1)
+        mark(ypos, posicion, ' m ', player)
       end
     end
   end
 
-  def mark(xo_pos, yo_pos, symbol, player, type)
+  def mark(xo_pos, yo_pos, symbol, player)
     # marcar simbolo en la coordenada especificada
     if player == 1
-      if type == 1
-        @first_matrix_j1[xo_pos][yo_pos] = symbol
-      else
-        @second_matrix_j1[xo_pos][yo_pos] = symbol
-      end
-    elsif type == 1
-      @first_matrix_j2[xo_pos][yo_pos] = symbol
+       @first_matrix_j1[xo_pos][yo_pos] = symbol
     else
-      @second_matrix_j2[xo_pos][yo_pos] = symbol
+      @first_matrix_j2[xo_pos][yo_pos] = symbol
     end
   end
 

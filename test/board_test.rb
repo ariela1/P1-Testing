@@ -153,7 +153,7 @@ class BoardTest < Test::Unit::TestCase
   end
 
   def test_place_i_first_player
-    @board.mark(2, 5, ' i ', 2, 1)
+    @board.mark(2, 5, ' i ', 2)
     @board.add_attack_on_boards(1, 2, 5)
     expected_j1 =
       [['*', '*', '*', '*', '*', '*', '*', '*', '*', '*', '*', '*'],
@@ -177,7 +177,7 @@ class BoardTest < Test::Unit::TestCase
   end
 
   def test_place_i_second_player
-    @board.mark(6, 8, ' i ', 1, 1)
+    @board.mark(6, 8, ' i ', 1)
     @board.add_attack_on_boards(2, 6, 8)
     expected_j2 =
       [['*', '*', '*', '*', '*', '*', '*', '*', '*', '*', '*', '*'],
@@ -201,7 +201,7 @@ class BoardTest < Test::Unit::TestCase
   end
 
   def test_place_m_first_player
-    @board.mark(4, 4, ' m ', 2, 1)
+    @board.mark(4, 4, ' m ', 2)
     @board.add_attack_on_boards(1, 4, 4)
     expected_j1 =
       [['*', '*', '*', '*', '*', '*', '*', '*', '*', '*', '*', '*'],
@@ -225,7 +225,7 @@ class BoardTest < Test::Unit::TestCase
   end
 
   def test_place_m_second_player
-    @board.mark(10, 10, ' m ', 1, 1)
+    @board.mark(10, 10, ' m ', 1)
     @board.add_attack_on_boards(2, 10, 10)
     expected_j2 =
       [['*', '*', '*', '*', '*', '*', '*', '*', '*', '*', '*', '*'],
@@ -249,7 +249,7 @@ class BoardTest < Test::Unit::TestCase
   end
 
   def test_place_f_first_player
-    @board.mark(2, 3, ' f ', 2, 1)
+    @board.mark(2, 3, ' f ', 2)
     @board.add_attack_on_boards(1, 2, 3)
     expected_j1 =
       [['*', '*', '*', '*', '*', '*', '*', '*', '*', '*', '*', '*'],
@@ -273,7 +273,7 @@ class BoardTest < Test::Unit::TestCase
   end
 
   def test_place_f_second_player
-    @board.mark(10, 1, ' f ', 1, 1)
+    @board.mark(10, 1, ' f ', 1)
     @board.add_attack_on_boards(2, 10, 1)
     expected_j2 =
       [['*', '*', '*', '*', '*', '*', '*', '*', '*', '*', '*', '*'],
