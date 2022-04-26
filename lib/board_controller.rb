@@ -89,7 +89,7 @@ class BoardController
       x = @model.rows if x.zero?
       y = (((pos - 1) / @model.rows).floor + 1).to_i
       if (pos < 1) || (x > @model.rows) || (y > @model.rows)
-        @view.print_error_ship_position(0)
+        @view.print_error(0)
         @view.print_ship_position_options(size)
       else
         valido = true
@@ -118,31 +118,126 @@ class BoardController
     if dim == 1
       x_fin = x + size - 1
       if x_fin > @model.rows
-        @view.print_error_ship_position(1)
+        @view.print_error(1)
         request_ship_position_input(size)
         return
       end
       (x..x_fin).each do |posicion|
         next unless (matrix[y][posicion] == ' i ') || (matrix[y][posicion] == ' m ') || (matrix[y][posicion] == ' f ')
 
-        @view.print_error_ship_position(2)
+        @view.print_error(2)
         request_ship_position_input(size)
       end
       @model.place_horizontal_ship(x, y, x_fin, @player)
     else
       y_fin = y + size - 1
       if y_fin > @model.rows
-        @view.print_error_ship_position(1)
+        @view.print_error(1)
         request_ship_position_input(size)
       end
       (y..y_fin).each do |posicion|
         next unless (matrix[posicion][x] == ' i ') || (matrix[posicion][x] == ' m ') || (matrix[posicion][x] == ' f ')
 
-        @view.print_error_ship_position(2)
+        @view.print_error(2)
         request_ship_position_input(size)
       end
       @model.place_vertical_ship(x, y, y_fin, @player)
     end
     @view.print_player_board(@model, @player)
   end
+
+  def begin_game
+    @player = 1
+    @view.start_shooting
+    win = false
+
+    if @model.mode == 1
+      #### IMPLEMENTAR IA
+    else
+      until win  ## FALTA IMPLEMENTAR EL SISTEMA DE GANAR
+        @view.print_player_turns(@player)
+        print_boards
+        @view.choose_atack
+        shooter
+        # print_boards
+        # VER SI GANO
+      end 
+    end
+  end
+
+  def shooter
+    valido = false
+    pos = 0
+    until valido
+      pos = $stdin.gets.to_i
+      x = (pos % @model.rows)
+      x = @model.rows if x.zero?
+      y = (((pos - 1) / @model.rows).floor + 1).to_i
+      if (pos < 1) || (x > @model.rows) || (y > @model.rows)
+        @view.print_error(0)
+        @view.choose_atack
+      else
+        valido = true
+      end
+    end
+    @model.add_attack_on_boards(@player, y, x) 
+    
+    
+    matrix_2 = if @player == 1
+      @model.first_matrix_j2
+    else
+      @model.first_matrix_j1
+    end
+    if matrix_2[y][x] == ' I ' || matrix_2[y][x] == ' M ' || matrix_2[y][x] == ' F '
+      @view.print_shot_ship
+    else 
+      change_turn
+    end
+  
+
+  end
+
+  def change_turn
+    @player = if @player == 1
+                2
+              else
+                1
+              end
+  end
+
+
 end
+
+
+
+
+"""
+    a = 1
+    while a == 1
+      attack = choose_atack
+      puts ' '
+      puts 'PLAYER ' + @player.to_s + ' ATTACKED POSITION ' + attack.to_s
+      print_boards
+      finish_turn
+      change_turn
+    end
+  end
+
+ 
+
+ 
+
+  def choose_atack
+    print_boards
+    attack = gets.chomp
+    attack
+  end
+
+  def finish_turn
+    puts ' '
+    puts 'PRESS ENTER TO FINISH YOUR TURN:'
+    attack = gets.chomp
+    attack
+  end
+end
+"""
