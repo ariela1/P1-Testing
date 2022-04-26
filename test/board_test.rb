@@ -301,7 +301,7 @@ end
 class CharTest < Test::Unit::TestCase
   def setup
     @board = Board.new
-    board_1 =
+    board1 =
       [['*', '*', '*', '*', '*', '*', '*', '*', '*', '*', '*', '*'],
        ['*', ' i ', ' m ', ' m ', ' m ', ' f ', '_', '_', '_', '_', '_', '*'],
        ['*', ' i ', ' m ', ' m ', ' f ', '_', '_', '_', '_', '_', '_', '*'],
@@ -314,7 +314,7 @@ class CharTest < Test::Unit::TestCase
        ['*', '_', '_', '_', '_', '_', ' - ', '_', '_', '_', '_', '*'],
        ['*', '_', '_', '_', '_', '_', '_', '_', '_', '_', '_', '*'],
        ['*', '*', '*', '*', '*', '*', '*', '*', '*', '*', '*', '*']]
-    board_2 =
+    board2 =
       [['*', '*', '*', '*', '*', '*', '*', '*', '*', '*', '*', '*'],
        ['*', '_', '_', '_', '_', '_', '_', '_', '_', '_', '_', '*'],
        ['*', '_', '_', '_', '_', '_', '_', '_', '_', '_', '_', '*'],
@@ -328,10 +328,10 @@ class CharTest < Test::Unit::TestCase
        ['*', '_', '_', '_', '_', '_', '_', '_', '_', '_', '_', '*'],
        ['*', '*', '*', '*', '*', '*', '*', '*', '*', '*', '*', '*']]
 
-    @board.first_matrix_j1 = board_1
-    @board.second_matrix_j1 = board_2
-    @board.first_matrix_j2 = board_1
-    @board.second_matrix_j2 = board_2
+    @board.first_matrix_j1 = board1
+    @board.second_matrix_j1 = board2
+    @board.first_matrix_j2 = board1
+    @board.second_matrix_j2 = board2
   end
 
   def test_get_symbol_first_j1

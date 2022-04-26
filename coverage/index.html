@@ -14,7 +14,7 @@
       <img src="./assets/0.12.3/loading.gif" alt="loading"/>
     </div>
     <div id="wrapper" class="hide">
-      <div class="timestamp">Generated <abbr class="timeago" title="2022-04-26T11:11:36-04:00">2022-04-26T11:11:36-04:00</abbr></div>
+      <div class="timestamp">Generated <abbr class="timeago" title="2022-04-26T11:31:35-04:00">2022-04-26T11:31:35-04:00</abbr></div>
       <ul class="group_tabs"></ul>
 
       <div id="content">
@@ -71,7 +71,7 @@
       <tbody>
         
           <tr class="t-file">
-            <td class="strong t-file__name"><a href="#51389c70389438ee2206d778e7ee319d4dcf2421" class="src_link" title="lib/board_model.rb">lib/board_model.rb</a></td>
+            <td class="strong t-file__name"><a href="#5bf5a45430c432050d99fdaf76445d341f5c423b" class="src_link" title="lib/board_model.rb">lib/board_model.rb</a></td>
             <td class="green strong cell--number t-file__coverage">100.00 %</td>
             <td class="cell--number">195</td>
             <td class="cell--number">89</td>
@@ -98,7 +98,7 @@
 
       <div class="source_files">
       
-        <div class="source_table" id="51389c70389438ee2206d778e7ee319d4dcf2421">
+        <div class="source_table" id="5bf5a45430c432050d99fdaf76445d341f5c423b">
   <div class="header">
     <h3>lib/board_model.rb</h3>
     <h4>
@@ -1528,7 +1528,7 @@
 
             
 
-            <code class="ruby">       @first_matrix_j1[xo_pos][yo_pos] = symbol</code>
+            <code class="ruby">      @first_matrix_j1[xo_pos][yo_pos] = symbol</code>
           </li>
         </div>
       
@@ -1748,7 +1748,7 @@
 
             
 
-            <code class="ruby">  def add_attack_on_boards(player, x, y)</code>
+            <code class="ruby">  def add_attack_on_boards(player, xpos, ypos)</code>
           </li>
         </div>
       
@@ -1770,7 +1770,7 @@
 
             
 
-            <code class="ruby">      case @first_matrix_j2[x][y]</code>
+            <code class="ruby">      case @first_matrix_j2[xpos][ypos]</code>
           </li>
         </div>
       
@@ -1792,7 +1792,7 @@
 
             
 
-            <code class="ruby">        @second_matrix_j1[x][y] = &#39; x &#39;</code>
+            <code class="ruby">        @second_matrix_j1[xpos][ypos] = &#39; x &#39;</code>
           </li>
         </div>
       
@@ -1803,7 +1803,7 @@
 
             
 
-            <code class="ruby">        @first_matrix_j2[x][y] = &#39; I &#39;</code>
+            <code class="ruby">        @first_matrix_j2[xpos][ypos] = &#39; I &#39;</code>
           </li>
         </div>
       
@@ -1836,7 +1836,7 @@
 
             
 
-            <code class="ruby">        @first_matrix_j2[x][y] = &#39; M &#39;</code>
+            <code class="ruby">        @first_matrix_j2[xpos][ypos] = &#39; M &#39;</code>
           </li>
         </div>
       
@@ -1847,7 +1847,7 @@
 
             
 
-            <code class="ruby">        @second_matrix_j1[x][y] = &#39; x &#39;</code>
+            <code class="ruby">        @second_matrix_j1[xpos][ypos] = &#39; x &#39;</code>
           </li>
         </div>
       
@@ -1880,7 +1880,7 @@
 
             
 
-            <code class="ruby">        @first_matrix_j2[x][y] = &#39; F &#39;</code>
+            <code class="ruby">        @first_matrix_j2[xpos][ypos] = &#39; F &#39;</code>
           </li>
         </div>
       
@@ -1891,7 +1891,7 @@
 
             
 
-            <code class="ruby">        @second_matrix_j1[x][y] = &#39; x &#39;</code>
+            <code class="ruby">        @second_matrix_j1[xpos][ypos] = &#39; x &#39;</code>
           </li>
         </div>
       
@@ -1924,7 +1924,7 @@
 
             
 
-            <code class="ruby">        @first_matrix_j2[x][y] = &#39; - &#39;</code>
+            <code class="ruby">        @first_matrix_j2[xpos][ypos] = &#39; - &#39;</code>
           </li>
         </div>
       
@@ -1935,7 +1935,7 @@
 
             
 
-            <code class="ruby">        @second_matrix_j1[x][y] = &#39; - &#39;</code>
+            <code class="ruby">        @second_matrix_j1[xpos][ypos] = &#39; - &#39;</code>
           </li>
         </div>
       
@@ -1968,7 +1968,7 @@
 
             
 
-            <code class="ruby">      case @first_matrix_j1[x][y]</code>
+            <code class="ruby">      case @first_matrix_j1[xpos][ypos]</code>
           </li>
         </div>
       
@@ -1990,7 +1990,7 @@
 
             
 
-            <code class="ruby">        @second_matrix_j2[x][y] = &#39; x &#39;</code>
+            <code class="ruby">        @second_matrix_j2[xpos][ypos] = &#39; x &#39;</code>
           </li>
         </div>
       
@@ -2001,7 +2001,7 @@
 
             
 
-            <code class="ruby">        @first_matrix_j1[x][y] = &#39; I &#39;</code>
+            <code class="ruby">        @first_matrix_j1[xpos][ypos] = &#39; I &#39;</code>
           </li>
         </div>
       
@@ -2034,7 +2034,7 @@
 
             
 
-            <code class="ruby">        @second_matrix_j2[x][y] = &#39; x &#39;</code>
+            <code class="ruby">        @second_matrix_j2[xpos][ypos] = &#39; x &#39;</code>
           </li>
         </div>
       
@@ -2045,7 +2045,7 @@
 
             
 
-            <code class="ruby">        @first_matrix_j1[x][y] = &#39; M &#39;</code>
+            <code class="ruby">        @first_matrix_j1[xpos][ypos] = &#39; M &#39;</code>
           </li>
         </div>
       
@@ -2078,7 +2078,7 @@
 
             
 
-            <code class="ruby">        @second_matrix_j2[x][y] = &#39; x &#39;</code>
+            <code class="ruby">        @second_matrix_j2[xpos][ypos] = &#39; x &#39;</code>
           </li>
         </div>
       
@@ -2089,7 +2089,7 @@
 
             
 
-            <code class="ruby">        @first_matrix_j1[x][y] = &#39; F &#39;</code>
+            <code class="ruby">        @first_matrix_j1[xpos][ypos] = &#39; F &#39;</code>
           </li>
         </div>
       
@@ -2122,7 +2122,7 @@
 
             
 
-            <code class="ruby">        @first_matrix_j1[x][y] = &#39; - &#39;</code>
+            <code class="ruby">        @first_matrix_j1[xpos][ypos] = &#39; - &#39;</code>
           </li>
         </div>
       
@@ -2133,7 +2133,7 @@
 
             
 
-            <code class="ruby">        @second_matrix_j2[x][y] = &#39; - &#39;</code>
+            <code class="ruby">        @second_matrix_j2[xpos][ypos] = &#39; - &#39;</code>
           </li>
         </div>
       

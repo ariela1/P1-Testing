@@ -1,7 +1,7 @@
 {
   "Unit Tests": {
     "coverage": {
-      "/home/ariela/Descargas/Testing/P1-Testing/lib/board_model.rb": {
+      "/mnt/c/Users/Caro/OneDrive/Escritorio/Caro/Universidad/Testing/P1-Testing/lib/board_model.rb": {
         "lines": [
           null,
           null,
@@ -201,6 +201,6 @@
         ]
       }
     },
-    "timestamp": 1650985896
+    "timestamp": 1650987095
   }
 }

@@ -125,7 +125,7 @@ class Board
   def mark(xo_pos, yo_pos, symbol, player)
     # marcar simbolo en la coordenada especificada
     if player == 1
-       @first_matrix_j1[xo_pos][yo_pos] = symbol
+      @first_matrix_j1[xo_pos][yo_pos] = symbol
     else
       @first_matrix_j2[xo_pos][yo_pos] = symbol
     end
@@ -145,42 +145,42 @@ class Board
     end
   end
 
-  def add_attack_on_boards(player, x, y)
+  def add_attack_on_boards(player, xpos, ypos)
     if player == 1
-      case @first_matrix_j2[x][y]
+      case @first_matrix_j2[xpos][ypos]
       when ' i '
-        @second_matrix_j1[x][y] = ' x '
-        @first_matrix_j2[x][y] = ' I '
+        @second_matrix_j1[xpos][ypos] = ' x '
+        @first_matrix_j2[xpos][ypos] = ' I '
         @j1_attack += 1
       when ' m '
-        @first_matrix_j2[x][y] = ' M '
-        @second_matrix_j1[x][y] = ' x '
+        @first_matrix_j2[xpos][ypos] = ' M '
+        @second_matrix_j1[xpos][ypos] = ' x '
         @j1_attack += 1
       when ' f '
-        @first_matrix_j2[x][y] = ' F '
-        @second_matrix_j1[x][y] = ' x '
+        @first_matrix_j2[xpos][ypos] = ' F '
+        @second_matrix_j1[xpos][ypos] = ' x '
         @j1_attack += 1
       else
-        @first_matrix_j2[x][y] = ' - '
-        @second_matrix_j1[x][y] = ' - '
+        @first_matrix_j2[xpos][ypos] = ' - '
+        @second_matrix_j1[xpos][ypos] = ' - '
       end
     else
-      case @first_matrix_j1[x][y]
+      case @first_matrix_j1[xpos][ypos]
       when ' i '
-        @second_matrix_j2[x][y] = ' x '
-        @first_matrix_j1[x][y] = ' I '
+        @second_matrix_j2[xpos][ypos] = ' x '
+        @first_matrix_j1[xpos][ypos] = ' I '
         @j2_attack += 1
       when ' m '
-        @second_matrix_j2[x][y] = ' x '
-        @first_matrix_j1[x][y] = ' M '
+        @second_matrix_j2[xpos][ypos] = ' x '
+        @first_matrix_j1[xpos][ypos] = ' M '
         @j2_attack += 1
       when ' f '
-        @second_matrix_j2[x][y] = ' x '
-        @first_matrix_j1[x][y] = ' F '
+        @second_matrix_j2[xpos][ypos] = ' x '
+        @first_matrix_j1[xpos][ypos] = ' F '
         @j2_attack += 1
       else
-        @first_matrix_j1[x][y] = ' - '
-        @second_matrix_j2[x][y] = ' - '
+        @first_matrix_j1[xpos][ypos] = ' - '
+        @second_matrix_j2[xpos][ypos] = ' - '
       end
     end
   end
