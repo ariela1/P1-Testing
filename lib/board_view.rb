@@ -1,10 +1,9 @@
 # frozen_string_literal: true
 
 require 'matrix'
-require_relative './observer/observer'
 
 # Vista del juego en consola
-class BoardView < Observer
+class BoardView
   def print_gamemode_options(first_attempt)
     if first_attempt
       print "Selecciona un modo de juego\n"
@@ -99,6 +98,5 @@ class BoardView < Observer
 
   def print_win(player)
     puts "\n\nJugador #{player} gana"
-  end 
-end 
-
+  end
+end

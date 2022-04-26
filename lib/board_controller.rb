@@ -146,7 +146,7 @@ class BoardController
 
         @view.print_error(2)
         request_ship_position_input(size)
-        return nil 
+        return nil
       end
       @model.place_vertical_ship(x, y, y_fin, @player)
     end
@@ -165,14 +165,14 @@ class BoardController
         print_boards
         @view.choose_atack
         shooter
-        if @j1_attack ==  @ships
-          win = true 
+        if @j1_attack == @ships
+          win = true
           @view.print_win(1)
         elsif @j2_attack == @ships
           win = true
           @view.print_win(2)
-        end 
-      end 
+        end
+      end
     end
   end
 
@@ -204,8 +204,8 @@ class BoardController
         @j1_attack += 1
       else
         @j2_attack += 1
-      end 
-    else 
+      end
+    else
       change_turn
     end
   end
