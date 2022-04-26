@@ -29,6 +29,10 @@ Para ejecutar el proyecto debe ejecutarse en consola, dentro de la carpeta lib, 
 Para ejecutar los test unitarios y se actualice la carpeta del coverage, se debe ejecutar el siguiente comando en la carpeta raíz:
 `rake test`
 
+## Rubocop
+
+to-do
+
 ### Reglas del juego
 
 Inicio del juego: se define el modo de juego, puede ser
@@ -50,6 +54,35 @@ El juego termina cuando todos los barcos de uno de los jugadores fueron hundidos
 
 El tablero definirá sus coordenadas según letras y números dispuestos en la parte superior y a los costados, la vista será como el siguiente ejemplo:
 
+|     | A   | B   | C   | D   | E   | F   |
+| --- | --- | --- | --- | --- | --- | --- |
+| 1   | -   |     |     |     |     |     |
+| 2   |     | i   | m   | M   | m   | F   |
+| 3   |     | I   |     |     |     |     |
+| 4   |     | M   |     |     |     |     |
+| 5   |     | F   |     |     |     |     |
+
+**<ins>El propio jugador ve en su tablero:</ins>**
+i: _inicio del barco_
+f: _fin del barco_
+m: _coordenada en la mitad de algún barco_
+I: _fuego en i_
+F: _fuego en f_
+M: _fuego en m_
+-: _fuego que cae al agua_
+
+|     | A   | B   | C   | D   | E   | F   |
+| --- | --- | --- | --- | --- | --- | --- |
+| 1   | -   |     |     |     | -   |     |
+| 2   |     |     | X   | X   |     |     |
+| 3   |     | -   |     |     |     |     |
+| 4   |     |     | X   |     |     | -   |
+| 5   |     |     |     |     |     |     |
+
+**<ins>El jugador ve en el tablero del contrincante:</ins>**
+X: _fuego en algún barco del contrincante_
+-: _fuego en agua del contrincante_
+
 **<ins>Dificultad estándar</ins>**
 
 - Tamaño del tablero: 10x10
@@ -61,10 +94,11 @@ El tablero definirá sus coordenadas según letras y números dispuestos en la p
   - 1 de largo 2
 
 **<ins>Nivel de dificultad 2</ins>**
-Tamaño del tablero: 15x15
-Cantidad de barcos:
 
-    - 2 de largo 5
-    - 2 de largo 4
-    - 2 de largo 3
-    - 2 de largo 2
+- Tamaño del tablero: 15x15
+- Cantidad de barcos:
+
+  - 2 de largo 5
+  - 2 de largo 4
+  - 2 de largo 3
+  - 2 de largo 2
