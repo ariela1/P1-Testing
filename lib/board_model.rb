@@ -126,7 +126,7 @@ class Board < Observable
     if player == 1
       if @first_matrix_j2[x][y] == " i "
         @second_matrix_j1[x][y] = " x "
-        @first_matrix_j2[x][y] = " I "
+        @first_matrix_j2[x][y] == " I "
       elsif @first_matrix_j2[x][y] == " m "
         @first_matrix_j2[x][y] = " M "
         @second_matrix_j1[x][y] = " x "

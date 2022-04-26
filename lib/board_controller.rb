@@ -159,9 +159,8 @@ class BoardController
         print_boards
         @view.choose_atack
         shooter
-        print_boards
+        # print_boards
         # VER SI GANO
-        change_turn
       end 
     end
   end
@@ -182,6 +181,20 @@ class BoardController
       end
     end
     @model.add_attack_on_boards(@player, y, x) 
+    
+    
+    matrix_2 = if @player == 1
+      @model.first_matrix_j2
+    else
+      @model.first_matrix_j1
+    end
+    if matrix_2[y][x] == ' I ' || matrix_2[y][x] == ' M ' || matrix_2[y][x] == ' F '
+      @view.print_shot_ship
+    else 
+      change_turn
+    end
+  
+
   end
 
   def change_turn

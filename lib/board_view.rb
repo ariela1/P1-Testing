@@ -93,5 +93,8 @@ class BoardView < Observer
     puts "\nIntroduce en que celda quieres atacar:"
   end
 
+  def print_shot_ship
+    puts "\n Has hundido una parte del barco rival, tienes doble turno"
+  end
 
-end
+end 
