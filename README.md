@@ -31,7 +31,7 @@ Para ejecutar los test unitarios y se actualice la carpeta del coverage, se debe
 
 ## Rubocop
 
-to-do
+Se disminunyó el número de ofensas a 44. Estas se reparten en problemas con metodos, clases y funciones demasiado largas y complejas. Creemos que nos enfrentamos a este problema por un diseño y planificación poco coordinado. Se avanzó en el código sin la rigurosisdad de mantener ciertas convenciones y estándares, para cuando intentamos solucionarlo ya era demasiado tarde.
 
 ### Reglas del juego
 
