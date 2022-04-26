@@ -151,7 +151,7 @@ class BoardController
     @view.print_player_board(@model, @player)
   end
 
-  def begin_game_set_up
+  def begin_game
     @player = 1
     @view.start_shooting
     win = false
