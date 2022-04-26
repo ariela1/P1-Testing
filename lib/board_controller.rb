@@ -55,16 +55,17 @@ class BoardController
   def choice_ships
     @player = 1
     @view.print_player_turns(1)
-    if @model.mode == 1
-    #### TODO IMPLEMENTAR IA - AGREGAR BARCOS
-    else
-      @view.print_player_board(@model, @player)
-      ship_position
-      @player = 2
-      @view.print_player_turns(2)
-    end
     @view.print_player_board(@model, @player)
     ship_position
+    @player = 2
+    if @model.mode == 1
+    #### TODO IMPLEMENTAR IA - AGREGAR BARCOS
+      ai_ship_position
+    else
+      @view.print_player_turns(2)
+      @view.print_player_board(@model, @player)
+      ship_position
+    end
   end
 
   def ship_position
@@ -76,6 +77,81 @@ class BoardController
     array.each do |e|
       request_ship_position_input(e)
     end
+  end
+
+  def ai_ship_position
+    array = if @model.difficulty == 1
+      [5, 4, 3, 3, 2]
+    else
+      [5, 5, 4, 4, 3, 3, 2, 2]
+    end
+    array.each do |size|
+      ai_request_ship_position(size)
+    end
+  end
+  
+  def ai_request_ship_position(size)
+    valid = false
+    # generar posicion inicial random dentro de los limites
+    x_pos = 1 + rand(@model.rows - 1)
+    y_pos = 1 + rand(@model.rows - 1)
+    # generar direccion valida
+    direction = 1 + rand(1)
+    direction_check = 0
+    until valid 
+      if direction == 1
+        if x_pos + size - 1 > @model.rows
+          direction = 2
+          direction_check += 1
+        else
+          valid = true
+        end
+      else
+        if y_pos + size - 1 > @model.rows
+          direction = 1
+          direction_check += 1
+        else
+          valid = true
+        end
+      end
+      if direction_check == 2 
+        x_pos = 1 + rand(@model.rows - 1)
+        y_pos = 1 + rand(@model.rows - 1)
+        direction = 1 + rand(1)
+        direction_check = 0
+      end        
+    end
+    ai_handle_ship_position(size, x_pos, y_pos, direction)
+  end
+
+  def ai_handle_ship_position(size, x, y, direction)
+    matrix = @model.first_matrix_j2
+    if direction == 1
+      x_fin = x + size - 1
+      # revisar colisiones
+      (x..x_fin).each do |posicion|
+        next unless (matrix[y][posicion] == ' i ') || (matrix[y][posicion] == ' m ') || (matrix[y][posicion] == ' f ')
+
+        @view.print_error(2) #eliminar aviso de colision
+        ai_request_ship_position(size)
+        return nil
+      end
+      @model.place_horizontal_ship(x, y, x_fin, @player)
+    else
+      y_fin = y + size - 1
+      # revisar colisiones
+      (y..y_fin).each do |posicion|
+        next unless (matrix[posicion][x] == ' i ') || (matrix[posicion][x] == ' m ') || (matrix[posicion][x] == ' f ')
+
+        @view.print_error(2) # eliminar aviso de colision
+        ai_request_ship_position(size)
+        return nil 
+      end
+      @model.place_vertical_ship(x, y, y_fin, @player)
+    end
+    # No es necesario mostrar tablero de IA
+    # Mostrar alguna cosa para dar feedback al player 1
+    @view.print_player_board(@model, @player)
   end
 
   def request_ship_position_input(size)
@@ -153,7 +229,19 @@ class BoardController
     @view.start_shooting
     win = false
     if @model.mode == 1
-      #### IMPLEMENTAR IA
+      until win
+        @view.print_player_turns(@player)
+        if @player == 1
+          print_boards
+          @view.choose_atack
+          shooter
+        else
+          ai_shooter
+          # print_boards
+        end
+        win = @model.winner
+      end
+      @view.print_win(@player)
     else
       until win
         @view.print_player_turns(@player)
@@ -196,6 +284,23 @@ class BoardController
     if matr2[y][x] == ' I ' || matr2[y][x] == ' M ' || matr2[y][x] == ' F '
       @view.print_shot_ship
     else
+      change_turn
+    end
+  end
+
+  def ai_shooter
+    x = 1 + rand(@model.rows - 1)
+    y = 1 + rand(@model.rows - 1)
+    # puts "jugador 2  #{x}, #{y} ataca #{(y - 1) * 10 + x}"
+    @model.add_attack_on_boards(@player, y, x)
+    matr2 = if @player == 1
+              @model.first_matrix_j2
+            else
+              @model.first_matrix_j1
+            end
+    if matr2[y][x] == ' I ' || matr2[y][x] == ' M ' || matr2[y][x] == ' F '
+      @view.print_shot_ship
+    else 
       change_turn
     end
   end

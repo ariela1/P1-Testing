@@ -1,14 +1,13 @@
 {
   "Unit Tests": {
     "coverage": {
-      "/mnt/c/Users/Caro/OneDrive/Escritorio/Caro/Universidad/Testing/P1-Testing/lib/board_model.rb": {
+      "D:/U/Testing/P1-Testing/lib/board_model.rb": {
         "lines": [
           null,
           null,
           null,
           1,
           1,
-          null,
           null,
           null,
           null,
@@ -200,16 +199,14 @@
           1,
           12,
           2,
-          10,
-          2,
           null,
-          8,
+          10,
           null,
           null,
           null
         ]
       }
     },
-    "timestamp": 1650957086
+    "timestamp": 1650982555
   }
 }
