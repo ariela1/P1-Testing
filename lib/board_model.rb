@@ -148,7 +148,7 @@ class Board
       case @first_matrix_j2[x][y]
       when ' i '
         @second_matrix_j1[x][y] = ' x '
-        @first_matrix_j2[x][y] == ' I '
+        @first_matrix_j2[x][y] = ' I '
       when ' m '
         @first_matrix_j2[x][y] = ' M '
         @second_matrix_j1[x][y] = ' x '
