@@ -72,7 +72,7 @@ class BoardController
               [5, 4, 3, 3, 2]
             else
               [5, 5, 4, 4, 3, 3, 2, 2]
-    end
+            end
     array.each do |e|
       request_ship_position_input(e)
     end
@@ -170,10 +170,10 @@ class BoardController
     valido = false
     pos = 0
     matr2 = if @player == 1
-      @model.first_matrix_j2
-    else
-      @model.first_matrix_j1
-    end
+              @model.first_matrix_j2
+            else
+              @model.first_matrix_j1
+            end
 
     until valido
       pos = $stdin.gets.to_i

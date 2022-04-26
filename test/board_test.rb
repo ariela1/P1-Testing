@@ -128,6 +128,7 @@ class BoardTest < Test::Unit::TestCase
     assert_equal(@board.first_matrix_j2, expected)
     assert_equal(@board.second_matrix_j1, expected)
     assert_equal(@board.j1_attack, 0)
+    assert_equal(@board.winner, false)
   end
 
   def test_place_x_second_player
@@ -148,6 +149,7 @@ class BoardTest < Test::Unit::TestCase
     assert_equal(@board.first_matrix_j1, expected)
     assert_equal(@board.second_matrix_j2, expected)
     assert_equal(@board.j2_attack, 0)
+    assert_equal(@board.winner, false)
   end
 
   def test_place_i_first_player
@@ -171,6 +173,7 @@ class BoardTest < Test::Unit::TestCase
     assert_equal(@board.first_matrix_j2, expected_j2)
     assert_equal(@board.second_matrix_j1, expected_j1)
     assert_equal(@board.j1_attack, 1)
+    assert_equal(@board.winner, false)
   end
 
   def test_place_i_second_player
@@ -194,6 +197,7 @@ class BoardTest < Test::Unit::TestCase
     assert_equal(@board.second_matrix_j2, expected_j2)
     assert_equal(@board.first_matrix_j1, expected_j1)
     assert_equal(@board.j2_attack, 1)
+    assert_equal(@board.winner, false)
   end
 
   def test_place_m_first_player
@@ -217,6 +221,7 @@ class BoardTest < Test::Unit::TestCase
     assert_equal(@board.first_matrix_j2, expected_j2)
     assert_equal(@board.second_matrix_j1, expected_j1)
     assert_equal(@board.j1_attack, 1)
+    assert_equal(@board.winner, false)
   end
 
   def test_place_m_second_player
@@ -240,5 +245,112 @@ class BoardTest < Test::Unit::TestCase
     assert_equal(@board.second_matrix_j2, expected_j2)
     assert_equal(@board.first_matrix_j1, expected_j1)
     assert_equal(@board.j2_attack, 1)
+    assert_equal(@board.winner, false)
+  end
+
+  def test_place_f_first_player
+    @board.mark(2, 3, ' f ', 2, 1)
+    @board.add_attack_on_boards(1, 2, 3)
+    expected_j1 =
+      [['*', '*', '*', '*', '*', '*', '*', '*', '*', '*', '*', '*'],
+       ['*', '_', '_', '_', '_', '_', '_', '_', '_', '_', '_', '*'],
+       ['*', '_', '_', ' x ', '_', '_', '_', '_', '_', '_', '_', '*'],
+       ['*', '_', '_', '_', '_', '_', '_', '_', '_', '_', '_', '*'],
+       ['*', '_', '_', '_', '_', '_', '_', '_', '_', '_', '_', '*'],
+       ['*', '_', '_', '_', '_', '_', '_', '_', '_', '_', '_', '*'],
+       ['*', '_', '_', '_', '_', '_', '_', '_', '_', '_', '_', '*'],
+       ['*', '_', '_', '_', '_', '_', '_', '_', '_', '_', '_', '*'],
+       ['*', '_', '_', '_', '_', '_', '_', '_', '_', '_', '_', '*'],
+       ['*', '_', '_', '_', '_', '_', '_', '_', '_', '_', '_', '*'],
+       ['*', '_', '_', '_', '_', '_', '_', '_', '_', '_', '_', '*'],
+       ['*', '*', '*', '*', '*', '*', '*', '*', '*', '*', '*', '*']]
+    expected_j2 = Marshal.load(Marshal.dump(expected_j1))
+    expected_j2[2][3] = ' F '
+    assert_equal(@board.first_matrix_j2, expected_j2)
+    assert_equal(@board.second_matrix_j1, expected_j1)
+    assert_equal(@board.j1_attack, 1)
+    assert_equal(@board.winner, false)
+  end
+
+  def test_place_f_second_player
+    @board.mark(10, 1, ' f ', 1, 1)
+    @board.add_attack_on_boards(2, 10, 1)
+    expected_j2 =
+      [['*', '*', '*', '*', '*', '*', '*', '*', '*', '*', '*', '*'],
+       ['*', '_', '_', '_', '_', '_', '_', '_', '_', '_', '_', '*'],
+       ['*', '_', '_', '_', '_', '_', '_', '_', '_', '_', '_', '*'],
+       ['*', '_', '_', '_', '_', '_', '_', '_', '_', '_', '_', '*'],
+       ['*', '_', '_', '_', '_', '_', '_', '_', '_', '_', '_', '*'],
+       ['*', '_', '_', '_', '_', '_', '_', '_', '_', '_', '_', '*'],
+       ['*', '_', '_', '_', '_', '_', '_', '_', '_', '_', '_', '*'],
+       ['*', '_', '_', '_', '_', '_', '_', '_', '_', '_', '_', '*'],
+       ['*', '_', '_', '_', '_', '_', '_', '_', '_', '_', '_', '*'],
+       ['*', '_', '_', '_', '_', '_', '_', '_', '_', '_', '_', '*'],
+       ['*', ' x ', '_', '_', '_', '_', '_', '_', '_', '_', '_', '*'],
+       ['*', '*', '*', '*', '*', '*', '*', '*', '*', '*', '*', '*']]
+    expected_j1 = Marshal.load(Marshal.dump(expected_j2))
+    expected_j1[10][1] = ' F '
+    assert_equal(@board.second_matrix_j2, expected_j2)
+    assert_equal(@board.first_matrix_j1, expected_j1)
+    assert_equal(@board.j2_attack, 1)
+    assert_equal(@board.winner, false)
+  end
+end
+
+# Revisa si caracteres se están accediendo correctamente
+class CharTest < Test::Unit::TestCase
+  def setup
+    @board = Board.new
+    board_1 =
+      [['*', '*', '*', '*', '*', '*', '*', '*', '*', '*', '*', '*'],
+       ['*', ' i ', ' m ', ' m ', ' m ', ' f ', '_', '_', '_', '_', '_', '*'],
+       ['*', ' i ', ' m ', ' m ', ' f ', '_', '_', '_', '_', '_', '_', '*'],
+       ['*', ' I ', ' m ', ' f ', '_', '_', '_', '_', '_', '_', '_', '*'],
+       ['*', ' i ', ' M ', ' F ', '_', '_', '_', '_', '_', '_', '_', '*'],
+       ['*', ' i ', ' f ', '_', '_', '_', '_', '_', '_', '_', '_', '*'],
+       ['*', '_', '_', '_', '_', '_', '_', '_', '_', '_', '_', '*'],
+       ['*', '_', '_', '_', '_', '_', '_', '_', '_', '_', '_', '*'],
+       ['*', '_', '_', '_', '_', '_', '_', '_', '_', '_', '_', '*'],
+       ['*', '_', '_', '_', '_', '_', ' - ', '_', '_', '_', '_', '*'],
+       ['*', '_', '_', '_', '_', '_', '_', '_', '_', '_', '_', '*'],
+       ['*', '*', '*', '*', '*', '*', '*', '*', '*', '*', '*', '*']]
+    board_2 =
+      [['*', '*', '*', '*', '*', '*', '*', '*', '*', '*', '*', '*'],
+       ['*', '_', '_', '_', '_', '_', '_', '_', '_', '_', '_', '*'],
+       ['*', '_', '_', '_', '_', '_', '_', '_', '_', '_', '_', '*'],
+       ['*', ' x ', '_', '_', '_', '_', '_', '_', '_', '_', '_', '*'],
+       ['*', '_', ' x ', ' x ', '_', '_', '_', '_', '_', '_', '_', '*'],
+       ['*', '_', '_', '_', '_', '_', '_', '_', '_', '_', '_', '*'],
+       ['*', '_', '_', '_', '_', '_', '_', '_', '_', '_', '_', '*'],
+       ['*', '_', '_', '_', '_', '_', '_', '_', '_', '_', '_', '*'],
+       ['*', '_', '_', '_', '_', '_', '_', '_', '_', '_', '_', '*'],
+       ['*', '_', '_', '_', '_', '_', '_', '_', '_', '_', '_', '*'],
+       ['*', '_', '_', '_', '_', '_', '_', '_', '_', '_', '_', '*'],
+       ['*', '*', '*', '*', '*', '*', '*', '*', '*', '*', '*', '*']]
+
+    @board.first_matrix_j1 = board_1
+    @board.second_matrix_j1 = board_2
+    @board.first_matrix_j2 = board_1
+    @board.second_matrix_j2 = board_2
+  end
+
+  def test_get_symbol_first_j1
+    symbol = @board.symbol_at(4, 2, 1, 1)
+    assert_equal(symbol, ' M ')
+  end
+
+  def test_get_symbol_second_j1
+    symbol = @board.symbol_at(3, 1, 1, 2)
+    assert_equal(symbol, ' x ')
+  end
+
+  def test_get_symbol_first_j2
+    symbol = @board.symbol_at(4, 3, 2, 1)
+    assert_equal(symbol, ' F ')
+  end
+
+  def test_get_symbol_second_j2
+    symbol = @board.symbol_at(3, 2, 2, 2)
+    assert_equal(symbol, '_')
   end
 end
