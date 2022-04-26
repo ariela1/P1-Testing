@@ -41,7 +41,6 @@ class BoardController
   end
 
   def handle_difficulty(diff)
-    @model.difficulty = diff
     if diff == 1
       @model.set_difficulty_easy
     else
