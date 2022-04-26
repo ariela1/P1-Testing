@@ -5,7 +5,6 @@ require 'rubocop/rake_task'
 task default: %w[lint test]
 
 task :test do
-  ruby 'test/board_test.rb'
   ruby 'test/board_winner_test.rb'
 end
 
