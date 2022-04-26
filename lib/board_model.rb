@@ -6,11 +6,10 @@ class Board
                 :first_matrix_j1,
                 :second_matrix_j1,
                 :first_matrix_j2,
-                :second_matrix_j2, 
+                :second_matrix_j2,
                 :difficulty,
                 :j1_attack,
                 :j2_attack
-
 
   def initialize
     super()
@@ -194,11 +193,9 @@ class Board
 
   def winner
     if @j1_attack == @ships
-      return true
-    elsif @j2_attack == @ships
-      return true
+      true
     else
-      return false
+      @j2_attack == @ships
     end
   end
 end
