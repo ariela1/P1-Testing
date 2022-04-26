@@ -125,13 +125,14 @@ class BoardController
       if x_fin > @model.rows
         @view.print_error(1)
         request_ship_position_input(size)
-        return
+        return nil
       end
       (x..x_fin).each do |posicion|
         next unless (matrix[y][posicion] == ' i ') || (matrix[y][posicion] == ' m ') || (matrix[y][posicion] == ' f ')
 
         @view.print_error(2)
         request_ship_position_input(size)
+        return nil
       end
       @model.place_horizontal_ship(x, y, x_fin, @player)
     else
@@ -139,12 +140,14 @@ class BoardController
       if y_fin > @model.rows
         @view.print_error(1)
         request_ship_position_input(size)
+        return nil
       end
       (y..y_fin).each do |posicion|
         next unless (matrix[posicion][x] == ' i ') || (matrix[posicion][x] == ' m ') || (matrix[posicion][x] == ' f ')
 
         @view.print_error(2)
         request_ship_position_input(size)
+        return nil 
       end
       @model.place_vertical_ship(x, y, y_fin, @player)
     end
