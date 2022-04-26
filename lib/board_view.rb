@@ -99,6 +99,5 @@ class BoardView < Observer
 
   def print_win(player)
     puts "\n\nJugador #{player} gana"
-  end 
-end 
-
+  end
+end
