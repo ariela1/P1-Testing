@@ -6,9 +6,6 @@ class BoardController
     @model = board_model
     @view = board_view
     @player = 0
-    @ships = 0
-    @j1_attack = 0
-    @j2_attack = 0
   end
 
   def request_gamemode_input
@@ -72,25 +69,21 @@ class BoardController
   end
 
   def ship_position
-    if @model.difficulty == 1
-      array = [5, 4, 3, 3, 2]
-      @ships = 17
-    else
-      array = [5, 5, 4, 4, 3, 3, 2, 2]
-      @ships = 28
-    end
+    array = if @model.difficulty == 1
+              [5, 4, 3, 3, 2]
+            else
+              [5, 5, 4, 4, 3, 3, 2, 2]
+            end
     array.each do |e|
       request_ship_position_input(e)
     end
   end
 
   def ai_ship_position
-    if @model.difficulty == 1
-      array = [5, 4, 3, 3, 2]
-      @ships = 17
+    array = if @model.difficulty == 1
+      [5, 4, 3, 3, 2]
     else
-      array = [5, 5, 4, 4, 3, 3, 2, 2]
-      @ships = 28
+      [5, 5, 4, 4, 3, 3, 2, 2]
     end
     array.each do |size|
       ai_request_ship_position(size)
@@ -224,7 +217,7 @@ class BoardController
 
         @view.print_error(2)
         request_ship_position_input(size)
-        return nil 
+        return nil
       end
       @model.place_vertical_ship(x, y, y_fin, @player)
     end
@@ -246,34 +239,30 @@ class BoardController
           ai_shooter
           # print_boards
         end
-        if @j1_attack ==  @ships
-          win = true 
-          @view.print_win(1)
-        elsif @j2_attack == @ships
-          win = true
-          @view.print_win(2)
-        end 
+        win = @model.winner
       end
+      @view.print_win(@player)
     else
       until win
         @view.print_player_turns(@player)
         print_boards
         @view.choose_atack
         shooter
-        if @j1_attack ==  @ships
-          win = true 
-          @view.print_win(1)
-        elsif @j2_attack == @ships
-          win = true
-          @view.print_win(2)
-        end 
-      end 
+        win = @model.winner
+      end
+      @view.print_win(@player)
     end
   end
 
   def shooter
     valido = false
     pos = 0
+    matr2 = if @player == 1
+              @model.first_matrix_j2
+            else
+              @model.first_matrix_j1
+            end
+
     until valido
       pos = $stdin.gets.to_i
       x = (pos % @model.rows)
@@ -282,25 +271,19 @@ class BoardController
       if (pos < 1) || (x > @model.rows) || (y > @model.rows)
         @view.print_error(0)
         @view.choose_atack
+      elsif matr2[y][x] == ' I ' || matr2[y][x] == ' M ' || matr2[y][x] == ' F '
+        @view.print_error(3)
+        @view.choose_atack
+
       else
         valido = true
       end
     end
     @model.add_attack_on_boards(@player, y, x)
 
-    matr2 = if @player == 1
-              @model.first_matrix_j2
-            else
-              @model.first_matrix_j1
-            end
     if matr2[y][x] == ' I ' || matr2[y][x] == ' M ' || matr2[y][x] == ' F '
       @view.print_shot_ship
-      if @player == 1
-        @j1_attack += 1
-      else
-        @j2_attack += 1
-      end 
-    else 
+    else
       change_turn
     end
   end
@@ -317,11 +300,6 @@ class BoardController
             end
     if matr2[y][x] == ' I ' || matr2[y][x] == ' M ' || matr2[y][x] == ' F '
       @view.print_shot_ship
-      if @player == 1
-        @j1_attack += 1
-      else
-        @j2_attack += 1
-      end 
     else 
       change_turn
     end
