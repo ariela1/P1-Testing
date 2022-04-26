@@ -1,7 +1,7 @@
 {
   "Unit Tests": {
     "coverage": {
-      "/mnt/c/Users/Caro/OneDrive/Escritorio/Caro/Universidad/Testing/P1-Testing/lib/board_model.rb": {
+      "D:/U/Testing/P1-Testing/lib/board_model.rb": {
         "lines": [
           null,
           null,
@@ -184,7 +184,7 @@
           null
         ]
       },
-      "/mnt/c/Users/Caro/OneDrive/Escritorio/Caro/Universidad/Testing/P1-Testing/lib/observer/observable.rb": {
+      "D:/U/Testing/P1-Testing/lib/observer/observable.rb": {
         "lines": [
           null,
           null,
@@ -204,6 +204,6 @@
         ]
       }
     },
-    "timestamp": 1650940577
+    "timestamp": 1650971607
   }
 }
