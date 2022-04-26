@@ -6,6 +6,9 @@ class BoardController
     @model = board_model
     @view = board_view
     @player = 0
+    @ships = 0
+    @j1_attack = 0
+    @j2_attack = 0
   end
 
   def request_gamemode_input
@@ -69,11 +72,13 @@ class BoardController
   end
 
   def ship_position
-    array = if @model.difficulty == 1
-              [5, 4, 3, 3, 2]
-            else
-              [5, 5, 4, 4, 3, 3, 2, 2]
-            end
+    if @model.difficulty == 1
+      array = [5, 4, 3, 3, 2]
+      @ships = 17
+    else
+      array = [5, 5, 4, 4, 3, 3, 2, 2]
+      @ships = 28
+    end
     array.each do |e|
       request_ship_position_input(e)
     end
@@ -150,7 +155,6 @@ class BoardController
     @player = 1
     @view.start_shooting
     win = false
-
     if @model.mode == 1
       #### IMPLEMENTAR IA
     else
@@ -159,8 +163,13 @@ class BoardController
         print_boards
         @view.choose_atack
         shooter
-        # print_boards
-        # VER SI GANO
+        if @j1_attack ==  @ships
+          win = true 
+          @view.print_win(1)
+        elsif @j2_attack == @ships
+          win = true
+          @view.print_win(2)
+        end 
       end 
     end
   end
@@ -190,6 +199,11 @@ class BoardController
     end
     if matrix_2[y][x] == ' I ' || matrix_2[y][x] == ' M ' || matrix_2[y][x] == ' F '
       @view.print_shot_ship
+      if @player == 1
+        @j1_attack += 1
+      else
+        @j2_attack += 1
+      end 
     else 
       change_turn
     end
@@ -204,40 +218,4 @@ class BoardController
                 1
               end
   end
-
-
 end
-
-
-
-
-"""
-    a = 1
-    while a == 1
-      attack = choose_atack
-      puts ' '
-      puts 'PLAYER ' + @player.to_s + ' ATTACKED POSITION ' + attack.to_s
-      print_boards
-      finish_turn
-      change_turn
-    end
-  end
-
- 
-
- 
-
-  def choose_atack
-    print_boards
-    attack = gets.chomp
-    attack
-  end
-
-  def finish_turn
-    puts ' '
-    puts 'PRESS ENTER TO FINISH YOUR TURN:'
-    attack = gets.chomp
-    attack
-  end
-end
-"""
