@@ -179,6 +179,12 @@ class BoardController
   def shooter
     valido = false
     pos = 0
+    matr2 = if @player == 1
+      @model.first_matrix_j2
+    else
+      @model.first_matrix_j1
+    end
+
     until valido
       pos = $stdin.gets.to_i
       x = (pos % @model.rows)
@@ -187,17 +193,16 @@ class BoardController
       if (pos < 1) || (x > @model.rows) || (y > @model.rows)
         @view.print_error(0)
         @view.choose_atack
+      elsif matr2[y][x] == ' I ' || matr2[y][x] == ' M ' || matr2[y][x] == ' F '
+        @view.print_error(3)
+        @view.choose_atack
+
       else
         valido = true
       end
     end
     @model.add_attack_on_boards(@player, y, x)
 
-    matr2 = if @player == 1
-              @model.first_matrix_j2
-            else
-              @model.first_matrix_j1
-            end
     if matr2[y][x] == ' I ' || matr2[y][x] == ' M ' || matr2[y][x] == ' F '
       @view.print_shot_ship
       if @player == 1

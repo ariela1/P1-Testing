@@ -81,6 +81,8 @@ class BoardView
       puts "\nBarco no cabe en el tablero"
     when 2
       puts "\nCelda o celdas ocupadas por otro barco"
+    when 3
+      puts "\nYa has atacado en esta posicion"
     end
   end
 
