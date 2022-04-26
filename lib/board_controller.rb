@@ -6,9 +6,6 @@ class BoardController
     @model = board_model
     @view = board_view
     @player = 0
-    @ships = 0
-    @j1_attack = 0
-    @j2_attack = 0
   end
 
   def request_gamemode_input
@@ -71,12 +68,10 @@ class BoardController
   end
 
   def ship_position
-    if @model.difficulty == 1
-      array = [5, 4, 3, 3, 2]
-      @ships = 17
-    else
-      array = [5, 5, 4, 4, 3, 3, 2, 2]
-      @ships = 28
+    array = if @model.difficulty == 1
+              [5, 4, 3, 3, 2]
+            else
+              [5, 5, 4, 4, 3, 3, 2, 2]
     end
     array.each do |e|
       request_ship_position_input(e)
@@ -165,14 +160,9 @@ class BoardController
         print_boards
         @view.choose_atack
         shooter
-        if @j1_attack == @ships
-          win = true
-          @view.print_win(1)
-        elsif @j2_attack == @ships
-          win = true
-          @view.print_win(2)
-        end
+        win = @model.winner
       end
+      @view.print_win(@player)
     end
   end
 
@@ -205,11 +195,6 @@ class BoardController
 
     if matr2[y][x] == ' I ' || matr2[y][x] == ' M ' || matr2[y][x] == ' F '
       @view.print_shot_ship
-      if @player == 1
-        @j1_attack += 1
-      else
-        @j2_attack += 1
-      end
     else
       change_turn
     end

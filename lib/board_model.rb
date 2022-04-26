@@ -6,7 +6,11 @@ class Board
                 :first_matrix_j1,
                 :second_matrix_j1,
                 :first_matrix_j2,
-                :second_matrix_j2, :difficulty
+                :second_matrix_j2, 
+                :difficulty,
+                :j1_attack,
+                :j2_attack
+
 
   def initialize
     super()
@@ -16,6 +20,9 @@ class Board
     @second_matrix_j2 = []
     @mode = 0
     @difficulty = 0
+    @ships = 0
+    @j1_attack = 0
+    @j2_attack = 0
   end
 
   def set_difficulty_easy
@@ -37,6 +44,7 @@ class Board
     @first_matrix_j2 = easy_board.map(&:clone)
     @second_matrix_j2 = easy_board.map(&:clone)
     @difficulty = 1
+    @ships = 17
   end
 
   def set_difficulty_hard
@@ -80,6 +88,7 @@ class Board
     @first_matrix_j2 = hard_board.map(&:clone)
     @second_matrix_j2 = hard_board.map(&:clone)
     @difficulty = 2
+    @ships = 28
   end
 
   def rows
@@ -149,12 +158,15 @@ class Board
       when ' i '
         @second_matrix_j1[x][y] = ' x '
         @first_matrix_j2[x][y] = ' I '
+        @j1_attack += 1
       when ' m '
         @first_matrix_j2[x][y] = ' M '
         @second_matrix_j1[x][y] = ' x '
+        @j1_attack += 1
       when ' f '
         @first_matrix_j2[x][y] = ' F '
         @second_matrix_j1[x][y] = ' x '
+        @j1_attack += 1
       else
         @first_matrix_j2[x][y] = ' - '
         @second_matrix_j1[x][y] = ' - '
@@ -164,16 +176,29 @@ class Board
       when ' i '
         @second_matrix_j2[x][y] = ' x '
         @first_matrix_j1[x][y] = ' I '
+        @j2_attack += 1
       when ' m '
         @second_matrix_j2[x][y] = ' x '
         @first_matrix_j1[x][y] = ' M '
+        @j2_attack += 1
       when ' f '
         @second_matrix_j2[x][y] = ' x '
         @first_matrix_j1[x][y] = ' F '
+        @j2_attack += 1
       else
         @first_matrix_j1[x][y] = ' - '
         @second_matrix_j2[x][y] = ' - '
       end
+    end
+  end
+
+  def winner
+    if @j1_attack == @ships
+      return true
+    elsif @j2_attack == @ships
+      return true
+    else
+      return false
     end
   end
 end

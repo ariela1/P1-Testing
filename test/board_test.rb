@@ -127,6 +127,7 @@ class BoardTest < Test::Unit::TestCase
        ['*', '*', '*', '*', '*', '*', '*', '*', '*', '*', '*', '*']]
     assert_equal(@board.first_matrix_j2, expected)
     assert_equal(@board.second_matrix_j1, expected)
+    assert_equal(@board.j1_attack, 0)
   end
 
   def test_place_x_second_player
@@ -146,6 +147,7 @@ class BoardTest < Test::Unit::TestCase
        ['*', '*', '*', '*', '*', '*', '*', '*', '*', '*', '*', '*']]
     assert_equal(@board.first_matrix_j1, expected)
     assert_equal(@board.second_matrix_j2, expected)
+    assert_equal(@board.j2_attack, 0)
   end
 
   def test_place_i_first_player
@@ -168,6 +170,7 @@ class BoardTest < Test::Unit::TestCase
     expected_j2[2][5] = ' I '
     assert_equal(@board.first_matrix_j2, expected_j2)
     assert_equal(@board.second_matrix_j1, expected_j1)
+    assert_equal(@board.j1_attack, 1)
   end
 
   def test_place_i_second_player
@@ -190,6 +193,7 @@ class BoardTest < Test::Unit::TestCase
     expected_j1[6][8] = ' I '
     assert_equal(@board.second_matrix_j2, expected_j2)
     assert_equal(@board.first_matrix_j1, expected_j1)
+    assert_equal(@board.j2_attack, 1)
   end
 
   def test_place_m_first_player
@@ -212,6 +216,7 @@ class BoardTest < Test::Unit::TestCase
     expected_j2[4][4] = ' M '
     assert_equal(@board.first_matrix_j2, expected_j2)
     assert_equal(@board.second_matrix_j1, expected_j1)
+    assert_equal(@board.j1_attack, 1)
   end
 
   def test_place_m_second_player
@@ -234,5 +239,6 @@ class BoardTest < Test::Unit::TestCase
     expected_j1[10][10] = ' M '
     assert_equal(@board.second_matrix_j2, expected_j2)
     assert_equal(@board.first_matrix_j1, expected_j1)
+    assert_equal(@board.j2_attack, 1)
   end
 end
