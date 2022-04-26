@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-# Revisa lógica del juego
+# Revisa logica del juego
 class BoardController
   def initialize(board_model, board_view)
     @model = board_model
@@ -146,22 +146,26 @@ class BoardController
     @view.print_player_board(@model, @player)
   end
 
-  def begin_game
+  def begin_game_set_up
     @player = 1
     @view.start_shooting
     win = false
+    win
+  end
 
+  def begin_game
+    win = begin_game_set_up
     if @model.mode == 1
       #### IMPLEMENTAR IA
     else
-      until win  ## FALTA IMPLEMENTAR EL SISTEMA DE GANAR
+      until win ## FALTA IMPLEMENTAR EL SISTEMA DE GANAR
         @view.print_player_turns(@player)
         print_boards
         @view.choose_atack
         shooter
         # print_boards
         # VER SI GANO
-      end 
+      end
     end
   end
 
@@ -180,21 +184,18 @@ class BoardController
         valido = true
       end
     end
-    @model.add_attack_on_boards(@player, y, x) 
-    
-    
-    matrix_2 = if @player == 1
-      @model.first_matrix_j2
-    else
-      @model.first_matrix_j1
-    end
-    if matrix_2[y][x] == ' I ' || matrix_2[y][x] == ' M ' || matrix_2[y][x] == ' F '
+    @model.add_attack_on_boards(@player, y, x)
+
+    matr2 = if @player == 1
+              @model.first_matrix_j2
+            else
+              @model.first_matrix_j1
+            end
+    if matr2[y][x] == ' I ' || matr2[y][x] == ' M ' || matr2[y][x] == ' F '
       @view.print_shot_ship
-    else 
+    else
       change_turn
     end
-  
-
   end
 
   def change_turn
@@ -204,14 +205,9 @@ class BoardController
                 1
               end
   end
-
-
 end
 
-
-
-
-"""
+''"
     a = 1
     while a == 1
       attack = choose_atack
@@ -223,9 +219,9 @@ end
     end
   end
 
- 
 
- 
+
+
 
   def choose_atack
     print_boards
@@ -240,4 +236,4 @@ end
     attack
   end
 end
-"""
+"''
