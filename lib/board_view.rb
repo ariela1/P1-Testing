@@ -96,5 +96,4 @@ class BoardView < Observer
   def print_shot_ship
     puts "\n Has hundido una parte del barco rival, tienes doble turno"
   end
-
-end 
+end
