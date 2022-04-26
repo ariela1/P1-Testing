@@ -1,7 +1,5 @@
 # frozen_string_literal: true
-require_relative 'test_helper'
-require_relative '../lib/board_model'
-require 'test/unit'
+require_relative 'board_test'
 
 class Winner < Test::Unit::TestCase
     
@@ -27,7 +25,7 @@ class Winner < Test::Unit::TestCase
         assert_equal(@board.winner, true)
     end
 
-    def ters_j2_winner_hard
+    def test_j2_winner_hard
         @board.set_difficulty_hard
         @board.j2_attack = 28
         assert_equal(@board.winner, true)
