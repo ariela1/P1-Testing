@@ -1,9 +1,7 @@
 # frozen_string_literal: true
 
-require_relative './observer/observable'
-
 # Modelo del tablero
-class Board < Observable
+class Board
   attr_accessor :mode,
                 :first_matrix_j1,
                 :second_matrix_j1,
