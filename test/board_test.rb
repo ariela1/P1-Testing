@@ -43,19 +43,25 @@ class InitBoard < Test::Unit::TestCase
   def test_board_dif_easy
     @board = Board.new
     @board.set_difficulty_easy
+    # Ver si se actualizan todos los atributos del modelo
     assert_equal(@board.first_matrix_j1, @easy_board)
     assert_equal(@board.first_matrix_j2, @easy_board)
     assert_equal(@board.second_matrix_j1, @easy_board)
     assert_equal(@board.second_matrix_j2, @easy_board)
+    assert_equal(@board.difficulty, 1)
+    assert_equal(@board.rows, 10)
   end
 
   def test_board_dif_hard
     @board = Board.new
     @board.set_difficulty_hard
+    # Ver si se actualizan todos los atributos del modelo
     assert_equal(@board.first_matrix_j1, @hard_board)
     assert_equal(@board.first_matrix_j2, @hard_board)
     assert_equal(@board.second_matrix_j1, @hard_board)
     assert_equal(@board.second_matrix_j2, @hard_board)
+    assert_equal(@board.difficulty, 2)
+    assert_equal(@board.rows, 15)
   end
 end
 

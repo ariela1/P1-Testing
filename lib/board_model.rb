@@ -38,6 +38,7 @@ class Board < Observable
     @second_matrix_j1 = easy_board.map(&:clone)
     @first_matrix_j2 = easy_board.map(&:clone)
     @second_matrix_j2 = easy_board.map(&:clone)
+    @difficulty = 1
   end
 
   def set_difficulty_hard
@@ -80,6 +81,7 @@ class Board < Observable
     @second_matrix_j1 = hard_board.map(&:clone)
     @first_matrix_j2 = hard_board.map(&:clone)
     @second_matrix_j2 = hard_board.map(&:clone)
+    @difficulty = 2
   end
 
   def rows
